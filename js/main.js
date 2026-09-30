@@ -11,6 +11,19 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
+  /* Mobile browsers fire a resize every time the URL bar slides in or out.
+     Left alone, ScrollTrigger reads each one as a genuine layout change and
+     re-measures every trigger on the page. On a page this long that is a burst
+     of layout work part-way through a scroll, which is exactly when the
+     visitor is most likely to feel it. */
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  /* Everything added below is the Home-page animation pass. It lives in this
+     file rather than a second one so the reveal vocabulary stays in one place,
+     and it is gated on this flag so no other page changes behaviour. Drop the
+     guard on any given function to extend that piece site-wide. */
+  const isHome = document.body.dataset.page === "home";
+
   /* ----------------------------------------------------------------
      Hero intro
   ---------------------------------------------------------------- */
@@ -43,11 +56,111 @@
     if (visual) {
       tl.to(visual, { autoAlpha: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "power3.inOut" }, "reveal+=0.55");
     }
+
+    /* This entrance starts from autoAlpha 0, so if the ticker never gets a
+       frame the entire above-the-fold hero stays blank. The nav entrance has
+       the same guard for the same reason. Any interruption - a backgrounded
+       tab, a paused devtools debugger, a device too slow to keep up - lands
+       on the fully visible hero rather than an empty page. */
+    window.setTimeout(() => {
+      /* Plain DOM, same reasoning as the header guard: this is insurance
+         against the ticker never running, so it must not call back into GSAP.
+         Property-by-property rather than removeAttribute, so a transition the
+         stylesheet expects is never thrown away with the inline style. */
+      [...lines, ...fades, visual].filter(Boolean).forEach((el) => {
+        ["transform", "opacity", "visibility", "clip-path", "translate", "scale", "rotate"].forEach(
+          (prop) => el.style.removeProperty(prop)
+        );
+      });
+    }, 3000);
+  }
+
+  /* ----------------------------------------------------------------
+     Header entrance
+     The nav previously had no entrance of its own: it was simply there at
+     rest and only picked up .scrolled once the page had already moved. This
+     settles it in from above on load, ahead of the hero.
+
+     Every tween clears the transform it wrote. That is not tidiness - a
+     transform left inline on the fixed header would pin .nav-cta's CSS
+     :hover lift (translateY(-2px)) dead, because an inline transform beats
+     any stylesheet rule. Same reason the brand and items are cleared.
+  ---------------------------------------------------------------- */
+  function initHeaderEntrance() {
+    if (prefersReducedMotion || !isHome) return;
+
+    const nav = document.getElementById("siteNav");
+    if (!nav) return;
+
+    const brand = nav.querySelector(".brand");
+    const items = gsap.utils.toArray(".nav-item, .nav-cta");
+
+    /* The nav, the CTA and the brand each carry `transition: all`. A blanket
+       transition also animates transform and opacity, so leaving it in place
+       makes the stylesheet fight GSAP for the same properties: the entrance
+       crawls, and on a slow frame the two can disagree about the final value.
+       Suppressing it for the duration of the entrance - and putting it back
+       afterwards - is what keeps the two systems from overlapping. */
+    const transitioned = [nav, brand, ...items].filter(Boolean);
+    const restore = transitioned.map((el) => [el, el.style.transition]);
+    transitioned.forEach((el) => (el.style.transition = "none"));
+
+    /* autoAlpha writes opacity *and* visibility, so a start state of 0 makes
+       these elements genuinely invisible until the tween runs. That is a bet
+       on the ticker: if the animation is interrupted, the tab is backgrounded
+       before the first frame, or the user is on a slow device, the navigation
+       and the whole hero stay blank. reveal() below is the safety net that
+       guarantees a painted page no matter what happens to the timeline. */
+    gsap.set(nav, { autoAlpha: 0, y: -20 });
+    if (brand) gsap.set(brand, { autoAlpha: 0, x: -14 });
+    gsap.set(items, { autoAlpha: 0, y: 10 });
+
+    const reveal = () => {
+      /* Restore the stylesheet's own transition *after* the inline transform is
+         gone, so the hand-off is never animated from a stale value. */
+      [nav, brand, ...items].filter(Boolean).forEach((el) => {
+        ["transform", "opacity", "visibility", "translate", "scale", "rotate"].forEach((prop) =>
+          el.style.removeProperty(prop)
+        );
+      });
+      restore.forEach(([el, value]) => (el.style.transition = value));
+    };
+
+    let done = false;
+    const timeline = gsap
+      .timeline({
+        defaults: { ease: "power3.out" },
+        delay: 0.1,
+        onComplete: () => {
+          if (done) return;
+          done = true;
+          reveal();
+        },
+      })
+      .to(nav, { autoAlpha: 1, y: 0, duration: 0.6, clearProps: "transform,visibility" })
+      .to(brand, { autoAlpha: 1, x: 0, duration: 0.55, clearProps: "transform,visibility" }, "-=0.35")
+      .to(items, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, clearProps: "transform,visibility" }, "-=0.4");
+
+    // The reveal must also survive the page being hidden mid-entrance, where
+    // rAF stops and onComplete may never fire.
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) timeline.pause();
+      else if (!done) timeline.resume();
+    });
+
+    // Last-resort backstop. Comfortably longer than the ~1.3s entrance, so in
+    // normal use the timeline has long since finished and this does nothing.
+    window.setTimeout(() => {
+      if (done) return;
+      done = true;
+      timeline.kill();
+      reveal();
+    }, 3000);
   }
 
   /* ----------------------------------------------------------------
      Navbar: active page link
-  ---------------------------------------------------------------- */
+   ---------------------------------------------------------------- */
   function initActivePage() {
     const page = document.body.dataset.page || "home";
     const activeHref = page === "home" ? "index.html" : page + ".html";
@@ -105,6 +218,55 @@
 
     // Close mobile collapse on link click
     const collapseEl = document.getElementById("mainNav");
+
+    /* Two classes, deliberately out of step with each other.
+       .nav-open lets the fixed bar grow past --nav-h so the panel is not
+       clipped, and .nav-links-in drives the per-link fade/slide.
+
+       They are removed at different moments on purpose. Bootstrap animates the
+       panel's own height, and the bar's height:auto tracks it, so .nav-open has
+       to stay on for the whole collapse - dropping it on hide.bs.collapse
+       snapped the bar back to 84px while the panel was still shrinking, which
+       is the jump. It comes off at hidden, when the panel is already 0 tall.
+       .nav-links-in goes on hide so the links fade while the panel closes. */
+    if (collapseEl) {
+      // Guards the deferred add in the rAF below against a fast double-toggle:
+      // hide bumps the token, so a pending open can no longer reveal the links.
+      let navSeq = 0;
+
+      // Both classes live on the header, which is what the .site-nav.nav-open /
+      // .site-nav.nav-links-in selectors in the stylesheet match against.
+      collapseEl.addEventListener("show.bs.collapse", () => {
+        nav.classList.add("nav-open");
+        const seq = ++navSeq;
+
+        /* The panel is still display:none when this event fires, so the browser
+           has no previous opacity to animate from. Adding .nav-links-in in the
+           same tick therefore snaps the links to visible and the fade/stagger
+           never runs. Wait one frame - Bootstrap has set display by then - then
+           force a reflow so the opacity:0 start state is committed before the
+           class flips, which is what lets the transition actually play. */
+        requestAnimationFrame(() => {
+          if (seq !== navSeq) return;
+          void collapseEl.offsetHeight;
+          nav.classList.add("nav-links-in");
+        });
+      });
+      collapseEl.addEventListener("hide.bs.collapse", () => {
+        navSeq++;
+        nav.classList.remove("nav-links-in");
+      });
+      collapseEl.addEventListener("hidden.bs.collapse", () => {
+        nav.classList.remove("nav-open");
+      });
+
+      // A page loaded with the panel already showing would otherwise never
+      // receive those events.
+      if (collapseEl.classList.contains("show")) {
+        nav.classList.add("nav-open", "nav-links-in");
+      }
+    }
+
     document.querySelectorAll("#mainNav .nav-link, .nav-cta").forEach((link) => {
       link.addEventListener("click", () => {
         const collapse = bootstrap.Collapse.getInstance(collapseEl);
@@ -185,6 +347,157 @@
         }
       );
     });
+
+    /* Home parallax, on the two media images that have no hover transform of
+       their own. Both wrappers are overflow:hidden and their images fill the
+       frame exactly, so the travel needs constant scale headroom - scale 1.12
+       buys 6% above and below, which is precisely the yPercent range. Without
+       it the <img> slides bodily out of its frame and the wrapper background
+       shows as a band at the trailing edge.
+
+       Deliberately not applied to .work-media or .post-media: those images
+       carry a CSS :hover scale, and an inline GSAP transform would outrank it
+       permanently, silently killing the hover zoom. */
+    if (isHome) {
+      gsap.utils.toArray(".intro-media img, .service-img-wrap img").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { yPercent: -6, scale: 1.12 },
+          {
+            yPercent: 6,
+            scale: 1.12,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el.closest(".intro-media, .service-img-wrap"),
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
+    }
+  }
+
+  /* ----------------------------------------------------------------
+     Media clip reveals
+     The image wrappers already clip to their own radius, so the entrance is a
+     one-axis clip wipe on the wrapper rather than a transform on the <img>.
+     Keeping the animation off the image itself is what lets the parallax
+     above and the card hover zooms keep working on the same element.
+  ---------------------------------------------------------------- */
+  function initMediaReveals() {
+    if (prefersReducedMotion || !isHome) return;
+
+    gsap.utils.toArray(".intro-media, .service-img-wrap, .post-media").forEach((wrap) => {
+      gsap.from(wrap, {
+        clipPath: "inset(0% 0% 100% 0%)",
+        duration: 1.1,
+        ease: "power3.inOut",
+        // Left false deliberately: an element that never reaches its trigger
+        // should be painted in its natural state, not stuck collapsed.
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: wrap,
+          start: "top 88%",
+          once: true,
+        },
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------------
+     Button arrow reveals
+     The buttons themselves already rise and fade through [data-reveal], so
+     only the arrow is animated here - that way the two effects never write to
+     the same transform. clearProps hands the icon back to the stylesheet's own
+     .btn-solid:hover i nudge the moment the entrance finishes.
+  ---------------------------------------------------------------- */
+  function initButtonReveals() {
+    if (prefersReducedMotion || !isHome) return;
+
+    gsap.utils.toArray(".section-head .btn-solid, .cta-inner .btn-solid").forEach((btn) => {
+      const icon = btn.querySelector("i");
+      if (!icon) return;
+
+      /* .btn-solid also carries `transition: all`, which covers the icon's
+         transform and opacity. Suppressed for the entrance so the stylesheet
+         and GSAP are not both animating the same icon at once. */
+      const previous = icon.style.transition;
+      icon.style.transition = "none";
+
+      gsap.from(icon, {
+        x: -8,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "power2.out",
+        clearProps: "transform,opacity,visibility",
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: btn,
+          start: "top 90%",
+          once: true,
+          onLeave: () => (icon.style.transition = previous),
+        },
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------------
+     Footer reveal
+     The footer was the one part of the page still arriving fully formed.
+     Driven from JS rather than data attributes on the shared partial: the
+     markup is expanded into six pages by build.js, so tagging it there would
+     either opt every page in or have to be undone on five of them. Selecting
+     .site-footer children directly keeps this Home-only for free.
+
+     The columns rise in reading order, and the social row gets its own
+     trigger so the icons do not arrive before their own links have settled.
+   ---------------------------------------------------------------- */
+  function initFooterReveal() {
+    if (prefersReducedMotion || !isHome) return;
+
+    const footer = document.querySelector(".site-footer");
+    if (!footer) return;
+
+    const columns = gsap.utils.toArray(".site-footer .row > [class*='col']");
+    const bottom = footer.querySelector(".footer-bottom");
+
+    if (columns.length) {
+      gsap.from(columns, {
+        y: 26,
+        autoAlpha: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: 0.09,
+        clearProps: "transform,opacity,visibility",
+        // Left false: below-the-fold markup that never reaches its trigger
+        // paints naturally instead of staying invisible.
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: footer,
+          start: "top 88%",
+          once: true,
+        },
+      });
+    }
+
+    if (bottom) {
+      gsap.from(bottom.children, {
+        y: 14,
+        autoAlpha: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.08,
+        clearProps: "transform,opacity,visibility",
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: bottom,
+          start: "top 94%",
+          once: true,
+        },
+      });
+    }
   }
 
   /* ----------------------------------------------------------------
@@ -742,10 +1055,14 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     initActivePage();
+    initHeaderEntrance();
     initNavbar();
     initReveals();
     initStaggerReveals();
-    initCollapseRefresh();
+    initMediaReveals();
+  initButtonReveals();
+  initFooterReveal();
+  initCollapseRefresh();
     initProcess();
     initProcessTilt();
     initTimeline();

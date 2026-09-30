@@ -153,6 +153,206 @@ h1, h2, h3, h4, .brand-name {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
+/* Mobile menu. The header is position:fixed with a fixed --nav-h, so the
+   expanded panel - a normal in-flow child - was being laid out inside an
+   84px-tall box: the first links landed at negative Y, behind the bar. Letting
+   the bar take its content height while open is what puts the list below the
+   brand row instead of under it. height:auto (not max-height) so the panel is
+   never scroll-clipped on short landscape phones. */
+@media (max-width: 991.98px) {
+  .site-nav.nav-open {
+    height: auto;
+    align-items: flex-start;
+    /* --nav-h is the brand row's own height, so the panel clears it exactly. */
+    max-height: calc(100dvh - var(--nav-h));
+    /* min-height, not just height:auto. With the panel fully collapsed the bar
+       hugs its content at 81px, then snapping back to --nav-h (84px) when
+       .nav-open comes off left a visible 3px jump at the end of every close.
+       This floors the animated height at exactly the closed height, so the last
+       few pixels of the collapse are absorbed instead of bouncing. */
+    min-height: var(--nav-h);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* vh is unreliable with a mobile URL bar; dvh tracks the visible area. */
+  .site-nav.nav-open .navbar { align-items: flex-start; }
+
+  /* The brand band must be the SAME height whether the panel is open or closed.
+     .site-nav is `align-items: center` around a fixed --nav-h bar, so while
+     closed the navbar is only as tall as the brand (~44px) and therefore sits
+     about 20px low inside the 84px bar. The instant the menu opens the bar
+     grows to the navbar's full height, that centring offset disappears, and the
+     logo plus the hamburger jump 20px upward - then jump back on close. That
+     vertical jolt is what reads as a shake.
+
+     Pinning the brand and the toggler to a --nav-h band, each centring its own
+     content, makes the offset permanently zero: the row occupies exactly the
+     same place in both states, and the panel simply grows underneath it. */
+  .site-nav .brand {
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+  }
+
+  /* The icon is a COLUMN flex box with an explicit gap, so the distance between
+     the two bars is fixed at 2px + 10px = 12px. Each bar therefore travels
+     exactly half of that (6px) to meet the other at the centre and form the X.
+     Margins are deliberately not used: they do not collapse inside a flex
+     container, which is why the crossing point used to drift off-centre. */
+  .site-nav .navbar-toggler {
+    height: var(--nav-h);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* The bar's height:auto already tracks Bootstrap's animated panel height, so
+     it needs no transition of its own - transitioning height to/from auto is
+     not animatable anyway, and the blanket `transition: all` on .site-nav would
+     try to animate height against the panel's own transition. Removing just
+     height from that list leaves the background/shadow fade intact. */
+  .site-nav.nav-open { transition-property: background-color, box-shadow, backdrop-filter; }
+
+  .site-nav.nav-open .navbar-collapse {
+    /* Clear the brand row, then a consistent rhythm between every item. */
+    margin-top: 12px;
+    padding: 8px 12px 14px;
+  }
+
+  .site-nav.nav-open .navbar-nav {
+    gap: 2px;
+    margin-bottom: 12px;
+  }
+
+  /* Uniform vertical padding + no negative margins gives every link the same
+     box, so the gap cannot collapse on the first or last item. */
+  /* display:block + the padding below make each row a full-width tap target.
+     min-height keeps every row at the 44px touch-target minimum even if the
+     font metrics change, and the negative margin reclaims the space so the
+     tighter vertical rhythm (and the panel's total height) is unchanged. */
+  .site-nav.nav-open .nav-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 11px 16px !important;
+    margin: 0;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  .site-nav.nav-open .nav-item + .nav-item .nav-link {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .site-nav.nav-open .nav-cta {
+    width: 100%;
+    padding: 13px 24px;
+  }
+
+  /* Link cascade. The transition lives on the resting rule so that removing
+     .nav-links-in animates too - that is what makes the close a fade rather
+     than a snap. The stagger delay is only set on the open state, so the close
+     runs as one even movement instead of unwinding item by item.
+
+     Transform only on the links: .nav-cta:hover lifts itself by -2px, and
+     animating transform here would fight that hover state. */
+  /* Touch feedback for the open menu.
+     cursor:pointer is redundant for a plain <a href> - the browser already
+     resolves that - but it is stated explicitly so the intent survives if the
+     markup ever changes to a <div>/<span> driven by JS, and so the toggler and
+     CTA are covered by the same rule.
+     -webkit-tap-highlight-color:transparent removes the grey flash iOS Safari
+     paints over the tapped element. On a near-black header that flash reads as
+     a broken grey box, so the :active state below is the only feedback - it has
+     to be the visible one. */
+  .site-nav .navbar-toggler,
+  .site-nav .nav-link,
+  .site-nav .nav-cta {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Entrance. The transition is restated in full rather than added to the base
+     rule, because `transition` is a shorthand: naming only opacity/transform
+     here would drop the colour/background/box-shadow transitions from the base
+     .nav-link rule and the hover/tap tint would snap instead of fading. */
+  .site-nav .nav-link,
+  .site-nav .nav-cta {
+    opacity: 0;
+    transition:
+      opacity 0.28s ease,
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.3s ease,
+      background 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .site-nav .nav-link { transform: translateY(-10px); }
+  .site-nav.nav-links-in .nav-link { opacity: 1; transform: translateY(0); }
+  .site-nav.nav-links-in .nav-cta { opacity: 1; }
+
+  /* Pressed state. :hover is unreliable on touch - it sticks after a tap and
+     leaves the row looking stuck-on - so the tap feedback is driven by :active
+     plus a slightly stronger tint than hover to read clearly on a small target.
+     Scoped to .nav-open so it never applies to the desktop row. */
+  .site-nav.nav-open .nav-link:active,
+  .site-nav.nav-open .nav-cta:active {
+    color: var(--yellow);
+    background: rgba(255, 212, 0, 0.16);
+    box-shadow: inset 0 0 0 1px rgba(255, 212, 0, 0.5);
+  }
+
+  /* The underline bar is decorative and sits on top of the text; keeping it out
+     of hit-testing stops it from swallowing taps near the bottom edge. */
+  .site-nav .nav-link::after { pointer-events: none; }
+
+  /* Sticky :hover on touch - the actual source of the "shake".
+     After a tap, mobile browsers keep :hover latched on the touched element for
+     well over a second (measured: 1466ms). During a close that latched hover
+     re-triggers the underline bar (scaleX 0 -> 1, 11 distinct frames) and the
+     background tint at the same moment the row is fading out and the panel is
+     collapsing. Three motions fighting over one 44px row reads as a jitter.
+
+     Gating the hover affordances on (hover: hover) means a touch device never
+     latches one in the first place, so there is nothing to un-latch. Pointer-
+     fine devices keep the existing hover styling untouched.
+     :active above stays unconditional - that is the real touch feedback. */
+  @media (hover: none) {
+    .site-nav .nav-link:hover,
+    .site-nav .nav-cta:hover {
+      color: inherit;
+      background: transparent;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .site-nav .nav-link:hover::after,
+    .site-nav .nav-cta:hover::after { transform: scaleX(0); }
+
+    /* Preserve the two states that are not hover: the current page, and
+       keyboard focus. A touch device can still be driven by a Bluetooth
+       keyboard, and the current page should not lose its highlight because a
+       stale hover was neutralised. */
+    .site-nav .nav-link.active:hover,
+    .site-nav .nav-link:focus-visible:hover { color: var(--yellow); }
+    .site-nav .nav-link.active:hover { background: rgba(255, 212, 0, 0.14); }
+    .site-nav .nav-link.active:hover::after,
+    .site-nav .nav-link:focus-visible:hover::after { transform: scaleX(1); }
+  }
+
+  .site-nav.nav-links-in .nav-item:nth-child(1) .nav-link { transition-delay: 0.03s; }
+  .site-nav.nav-links-in .nav-item:nth-child(2) .nav-link { transition-delay: 0.06s; }
+  .site-nav.nav-links-in .nav-item:nth-child(3) .nav-link { transition-delay: 0.09s; }
+  .site-nav.nav-links-in .nav-item:nth-child(4) .nav-link { transition-delay: 0.12s; }
+  .site-nav.nav-links-in .nav-item:nth-child(5) .nav-link { transition-delay: 0.15s; }
+  .site-nav.nav-links-in .nav-item:nth-child(6) .nav-link { transition-delay: 0.18s; }
+  .site-nav.nav-links-in .nav-cta { transition-delay: 0.21s; }
+}
+
 .navbar { width: 100%; padding: 0; }
 
 /* Bootstrap's default .navbar is a LIGHT theme: --bs-navbar-color and
@@ -296,13 +496,19 @@ h1, h2, h3, h4, .brand-name {
   width: 26px;
   height: 2px;
   background: var(--text);
-  margin: 6px 0;
   border-radius: 4px;
-  transition: all 0.3s ease;
+  /* transform only: the hamburger morphs by rotation, and a smooth curve on
+     that single property avoids the width/height transitions that `all` would
+     also try to run. Same curve as the mobile link cascade so the icon and the
+     panel feel like one motion. */
+  transform-origin: center;
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.navbar-toggler[aria-expanded="true"] .toggler-line:nth-child(1) { transform: translateY(4px) rotate(45deg); }
-.navbar-toggler[aria-expanded="true"] .toggler-line:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+/* 6px = half the 12px bar separation set by the toggler's flex gap, so the two
+   bars cross exactly at the icon's centre. */
+.navbar-toggler[aria-expanded="true"] .toggler-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.navbar-toggler[aria-expanded="true"] .toggler-line:nth-child(2) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ==========================================================================
    Hero
@@ -3347,6 +3553,10 @@ h1, h2, h3, h4, .brand-name {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    /* Delays too. A staggered reveal (the mobile nav cascade) otherwise still
+       trickles the items in one by one - exactly the motion these visitors
+       asked not to see. */
+    transition-delay: 0s !important;
   }
   html { scroll-behavior: auto; }
 
