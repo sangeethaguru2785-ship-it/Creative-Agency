@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Stackly client dashboard — track project progress, deliverables and invoices." />
+  <title>Client Dashboard | STACKLY Creative Agency</title>
+  <script>document.documentElement.className += " js";</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/dashboard.css" rel="stylesheet" />
+</head>
+<body class="theme-stackly" data-page="client-dashboard">
+
+  <div class="dash-shell" id="dashShell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="dash-sidebar" id="dashSidebar">
+      <a class="dash-logo" href="index.html" aria-label="Stackly home">
+        <img src="images/logo-yellow.webp" alt="Stackly" class="brand-logo" />
+      </a>
+
+      <nav class="dash-nav" aria-label="Client navigation">
+        <div class="dash-group-title">Menu</div>
+        <a class="dash-link is-active" href="#overview" data-target="#overview" data-title="Overview"><i class="bi bi-grid-1x2"></i><span>Overview</span></a>
+        <a class="dash-link" href="#status" data-target="#status" data-title="Project Status"><i class="bi bi-speedometer2"></i><span>Project Status</span></a>
+        <a class="dash-link" href="#active" data-target="#active" data-title="Active Projects"><i class="bi bi-lightning-charge"></i><span>Active Projects</span></a>
+        <a class="dash-link" href="#completed" data-target="#completed" data-title="Completed Projects"><i class="bi bi-check2-circle"></i><span>Completed Projects</span></a>
+        <a class="dash-link" href="#details" data-target="#details" data-title="Project Details"><i class="bi bi-file-earmark-text"></i><span>Project Details</span></a>
+        <a class="dash-link" href="#files" data-target="#files" data-title="Deliverables"><i class="bi bi-folder2-open"></i><span>Deliverables &amp; Files</span></a>
+        <a class="dash-link" href="#messages" data-target="#messages" data-title="Messages"><i class="bi bi-chat-dots"></i><span>Messages</span></a>
+        <a class="dash-link" href="#documents" data-target="#documents" data-title="Documents"><i class="bi bi-file-earmark-arrow-down"></i><span>Documents</span></a>
+        <a class="dash-link" href="#support" data-target="#support" data-title="Support"><i class="bi bi-life-preserver"></i><span>Support</span></a>
+
+        <div class="dash-group-title">Account</div>
+        <a class="dash-link" href="#invoices" data-target="#invoices" data-title="Invoices"><i class="bi bi-receipt"></i><span>Invoices &amp; Payments</span></a>
+        <a class="dash-link" href="#profile" data-target="#profile" data-title="Profile &amp; Settings"><i class="bi bi-gear"></i><span>Profile &amp; Settings</span></a>
+      </nav>
+
+      <div class="dash-side-foot">
+        <a class="dash-link is-logout" href="login.html" data-logout aria-label="Logout"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+        <a class="dash-link" href="index.html"><i class="bi bi-house"></i><span>Go To Home</span></a>
+      </div>
+    </aside>
+    <div class="dash-overlay" id="dashOverlay"></div>
+
+    <!-- ============ MAIN ============ -->
+    <div class="dash-main">
+      <header class="dash-topbar">
+        <button class="dash-menu-btn" id="dashMenuBtn" aria-label="Toggle menu"><i class="bi bi-list"></i></button>
+        <div class="dash-crumb" id="dashCrumb">Stackly / <b>Overview</b></div>
+        <div class="dash-topbar-spacer"></div>
+        <div class="dash-user" data-user-chip title="Harper Quinn">
+          <div class="dash-avatar" data-user-avatar data-initials="HQ"></div>
+          <div class="dash-user-meta"><b data-user-name>Harper Quinn</b><small data-user-email>harper@northlightcapital.com</small></div>
+        </div>
+      </header>
+
+      <main class="dash-content">
+
+        <!-- ===================== OVERVIEW ===================== -->
+        <section class="dash-section active" id="overview">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Welcome back, <span data-user-first>Harper</span></h1>
+              <p class="dash-h1-sub">Here's where your work with Stackly stands today.</p>
+            </div>
+          </div>
+
+          <div class="dash-cards">
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">Active Projects</span>
+              <div class="dash-stat-num"><span class="dg-num" data-count="3">3</span></div>
+              <span class="dash-delta">on track</span>
+            </div>
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">In Review</span>
+              <div class="dash-stat-num"><span class="dg-num" data-count="2">2</span></div>
+              <span class="dash-delta">awaiting your feedback</span>
+            </div>
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">Completed</span>
+              <div class="dash-stat-num"><span class="dg-num" data-count="14">14</span></div>
+              <span class="dash-delta">since 2021</span>
+            </div>
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">Outstanding</span>
+              <div class="dash-stat-num"><span class="dg-num" data-prefix="$" data-count="18500">18,500</span></div>
+              <span class="dash-delta"><i class="bi bi-exclamation-circle"></i> invoice due Oct 05</span>
+            </div>
+          </div>
+
+          <div class="dash-row two-col">
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div class="dash-card-title">Your Projects at a Glance</div>
+                <a class="dash-card-sub" href="404.html" data-target="#status" data-title="Project Status">Full status →</a>
+              </div>
+              <div style="display:grid; gap:16px;">
+                <div>
+                  <div class="pmeta"><b>Northlight Platform</b><span>92% · final build</span></div>
+                  <div class="dprogress"><div class="dprogress-fill" style="width:92%"></div></div>
+                </div>
+                <div>
+                  <div class="pmeta"><b>Brand Refresh 2026</b><span>78% · design review</span></div>
+                  <div class="dprogress"><div class="dprogress-fill" style="width:78%"></div></div>
+                </div>
+                <div>
+                  <div class="pmeta"><b>Investor Film</b><span>55% · editing</span></div>
+                  <div class="dprogress"><div class="dprogress-fill" style="width:55%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Recent Activity</div></div>
+              <div class="act-item"><i class="bi bi-check2-circle"></i><div class="act-text">Milestone approved — <span>Final build</span></div><div class="act-when">2h</div></div>
+              <div class="act-item"><i class="bi bi-file-earmark-arrow-up"></i><div class="act-text">New file delivered — <span>style-guide-v3.pdf</span></div><div class="act-when">Yesterday</div></div>
+              <div class="act-item"><i class="bi bi-chat-dots"></i><div class="act-text">Message from <span>Maya Reyes</span> in Investor Film</div><div class="act-when">2d</div></div>
+              <div class="act-item"><i class="bi bi-receipt"></i><div class="act-text">Invoice <span>#INV-2041</span> sent</div><div class="act-when">3d</div></div>
+              <div class="act-item"><i class="bi bi-trophy"></i><div class="act-text"><span>Brand Refresh</span> passed internal review</div><div class="act-when">5d</div></div>
+            </div>
+          </div>
+
+          <div class="dash-row two-col">
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div class="dash-card-title">Next Milestone</div>
+                <span class="spill is-warn">Due Oct 12</span>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Discovery &amp; Strategy</b><p>Positioning, sitemap and technical audit.</p></div>
+                <div class="m-when">Done</div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Design System</b><p>Components, tokens and UI kit.</p></div>
+                <div class="m-when">Done</div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-now"></div>
+                <div class="m-body"><b>Build &amp; Migration</b><p>Library migration and CMS handoff — in progress.</p></div>
+                <div class="m-when">Now</div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot"></div>
+                <div class="m-body"><b>Launch</b><p>QA, go-live and training.</p></div>
+                <div class="m-when">Oct 22</div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Invoices</div><a class="dash-card-sub" href="404.html" data-target="#invoices" data-title="Invoices &amp; Payments">All →</a></div>
+              <div class="dtable-wrap">
+                <table class="dtable">
+                  <thead><tr><th>Invoice</th><th>Amount</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr><td class="t-main">#INV-2041</td><td class="t-sub">$12,000</td><td><span class="spill is-warn">Due</span></td></tr>
+                    <tr><td class="t-main">#INV-2038</td><td class="t-sub">$6,500</td><td><span class="spill is-success">Paid</span></td></tr>
+                    <tr><td class="t-main">#INV-2035</td><td class="t-sub">$11,000</td><td><span class="spill is-success">Paid</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PROJECT STATUS ===================== -->
+        <section class="dash-section" id="status">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Project Status &amp; Progress</h1>
+              <p class="dash-h1-sub">Live progress across all your engagements</p>
+            </div>
+          </div>
+
+          <div class="dash-row four-col">
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Overall</span><div class="dash-stat-num">76%</div><span class="dash-delta">across 3 projects</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">On Track</span><div class="dash-stat-num">2</div><span class="dash-delta">2 of 3</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">In Review</span><div class="dash-stat-num">2</div><span class="dash-delta">awaiting feedback</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Next Launch</span><div class="dash-stat-num">Oct 22</div><span class="dash-delta">Northlight Platform</span></div>
+          </div>
+
+          <div class="dash-row three-col">
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div class="dash-card-title">Northlight Platform</div>
+                <span class="spill is-success">Active</span>
+              </div>
+              <div class="pmeta" style="margin-bottom:12px;"><b>92% complete</b><span>Final build</span></div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Strategy</b><p>Positioning &amp; audit</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>UI/UX</b><p>Design system</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-now"></div>
+                <div class="m-body"><b>Build</b><p>Migration + QA in progress</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot"></div>
+                <div class="m-body"><b>Launch</b><p>Due Oct 22</p></div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div class="dash-card-title">Brand Refresh 2026</div>
+                <span class="spill is-warn">Review</span>
+              </div>
+              <div class="pmeta" style="margin-bottom:12px;"><b>78% complete</b><span>Design review</span></div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Discovery</b><p>Workshops &amp; brand audit</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Identity</b><p>Logo routes delivered</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-now"></div>
+                <div class="m-body"><b>Refinement</b><p>Awaiting your feedback</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot"></div>
+                <div class="m-body"><b>Guidelines</b><p>Brand book + assets</p></div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div class="dash-card-title">Investor Film</div>
+                <span class="spill is-success">Active</span>
+              </div>
+              <div class="pmeta" style="margin-bottom:12px;"><b>55% complete</b><span>Editing</span></div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Script</b><p>Story &amp; shotlist</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Shoot</b><p>Principal photography</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-now"></div>
+                <div class="m-body"><b>Edit</b><p>Rough cut in progress</p></div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot"></div>
+                <div class="m-body"><b>Delivery</b><p>Final film + assets</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== ACTIVE PROJECTS ===================== -->
+        <section class="dash-section" id="active">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Active Projects</h1>
+              <p class="dash-h1-sub">3 projects currently in production</p>
+            </div>
+          </div>
+
+          <div class="dash-row three-col">
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Northlight Platform</div><span class="spill is-success">Active</span></div>
+              <div class="pmeta"><b>92%</b><span>Final build</span></div>
+              <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill" style="width:92%"></div></div>
+              <p class="dash-card-sub" style="margin-bottom:14px;">Web platform migration with a new investor experience.</p>
+              <div class="pmeta"><b>Launch</b><span>Oct 22, 2026</span></div>
+              <div class="pmeta" style="margin-bottom:16px;"><b>Deliverables</b><span>8 files</span></div>
+              <a class="dash-btn is-accent is-sm" href="404.html" data-target="#details" data-title="Project Details"><i class="bi bi-box-arrow-up-right"></i> View Details</a>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Brand Refresh 2026</div><span class="spill is-warn">Review</span></div>
+              <div class="pmeta"><b>78%</b><span>Design review</span></div>
+              <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill" style="width:78%"></div></div>
+              <p class="dash-card-sub" style="margin-bottom:14px;">Identity refresh built on the 2022 system — new voice, new toolkit.</p>
+              <div class="pmeta"><b>Next step</b><span>Your feedback</span></div>
+              <div class="pmeta" style="margin-bottom:16px;"><b>Deliverables</b><span>11 files</span></div>
+              <a class="dash-btn is-accent is-sm" href="404.html" data-target="#details" data-title="Project Details"><i class="bi bi-box-arrow-up-right"></i> View Details</a>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Investor Film</div><span class="spill is-success">Active</span></div>
+              <div class="pmeta"><b>55%</b><span>Editing</span></div>
+              <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill" style="width:55%"></div></div>
+              <p class="dash-card-sub" style="margin-bottom:14px;">90-second brand film for the Q4 investor roadshow.</p>
+              <div class="pmeta"><b>Delivery</b><span>Nov 05, 2026</span></div>
+              <div class="pmeta" style="margin-bottom:16px;"><b>Deliverables</b><span>6 files</span></div>
+              <a class="dash-btn is-accent is-sm" href="404.html" data-target="#details" data-title="Project Details"><i class="bi bi-box-arrow-up-right"></i> View Details</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== COMPLETED PROJECTS ===================== -->
+        <section class="dash-section" id="completed">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Completed Projects</h1>
+              <p class="dash-h1-sub">14 projects delivered since 2021</p>
+            </div>
+          </div>
+
+          <div class="dash-row three-col">
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Brand Refresh 2022</div><span class="spill is-success">Delivered</span></div>
+              <div class="pmeta"><b>Identity</b><span>2022</span></div>
+              <div class="pmeta"><b>Result</b><span>+40% brand recall</span></div>
+              <p class="dash-card-sub" style="margin-top:6px;">The system that started our partnership with Stackly.</p>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Meridian Landing System</div><span class="spill is-success">Delivered</span></div>
+              <div class="pmeta"><b>Digital</b><span>2023</span></div>
+              <div class="pmeta"><b>Result</b><span>3.2x lead growth</span></div>
+              <p class="dash-card-sub" style="margin-top:6px;">Sales-site system for the Meridian Group relaunch.</p>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Annual Report 2025</div><span class="spill is-success">Delivered</span></div>
+              <div class="pmeta"><b>Print &amp; Digital</b><span>2025</span></div>
+              <div class="pmeta"><b>Result</b><span>Shortlisted · Webby</span></div>
+              <p class="dash-card-sub" style="margin-top:6px;">Interactive annual report and investor deck.</p>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Rebrand Rollout</div><span class="spill is-success">Delivered</span></div>
+              <div class="pmeta"><b>Branding</b><span>2024</span></div>
+              <div class="pmeta"><b>Result</b><span>Unified across 12 offices</span></div>
+              <p class="dash-card-sub" style="margin-top:6px;">Global brand rollout and templates.</p>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Investor Deck 2025</div><span class="spill is-success">Delivered</span></div>
+              <div class="pmeta"><b>Creative</b><span>2025</span></div>
+              <div class="pmeta"><b>Result</b><span>$48M raised</span></div>
+              <p class="dash-card-sub" style="margin-top:6px;">Pitch deck and talking-candidate animations.</p>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Brand Refresh 2022 v2</div><span class="spill is-success">Delivered</span></div>
+              <div class="pmeta"><b>Branding</b><span>2021</span></div>
+              <div class="pmeta"><b>Result</b><span>Refreshed identity</span></div>
+              <p class="dash-card-sub" style="margin-top:6px;">The original refresh that started it all.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PROJECT DETAILS ===================== -->
+        <section class="dash-section" id="details">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Project Details</h1>
+              <p class="dash-h1-sub">Northlight Platform · active since Mar 2026</p>
+            </div>
+            <span class="spill is-success">Active</span>
+          </div>
+
+          <div class="dash-row two-col" style="grid-template-columns:1fr 1.5fr;">
+            <div class="dash-card">
+              <div class="dash-card-title" style="margin-bottom:14px;">Project Overview</div>
+              <div class="dtable-wrap" style="margin:0;">
+                <table class="dtable" style="min-width:0;">
+                  <tbody>
+                    <tr><td class="t-sub">Service</td><td class="t-main">Digital / Platform</td></tr>
+                    <tr><td class="t-sub">Team</td><td class="t-main">Maya, Ravi, Elena</td></tr>
+                    <tr><td class="t-sub">Started</td><td class="t-main">Mar 2026</td></tr>
+                    <tr><td class="t-sub">Launch</td><td class="t-main">Oct 22, 2026</td></tr>
+                    <tr><td class="t-sub">Budget</td><td class="t-main">$120,000</td></tr>
+                    <tr><td class="t-sub">Health</td><td><span class="spill is-success">On track</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Milestones</div><span class="spill">4 of 4</span></div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Discovery &amp; Strategy</b><p>Positioning, sitemap and technical audit.</p></div>
+                <div class="m-when">Mar 28</div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-done"></div>
+                <div class="m-body"><b>Design System</b><p>Components, tokens and UI kit.</p></div>
+                <div class="m-when">Jun 12</div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot is-now"></div>
+                <div class="m-body"><b>Build &amp; Migration</b><p>Library migration and CMS handoff — in progress.</p></div>
+                <div class="m-when">In progress</div>
+              </div>
+              <div class="milestone">
+                <div class="m-dot"></div>
+                <div class="m-body"><b>Launch</b><p>QA, go-live and training.</p></div>
+                <div class="m-when">Oct 22</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-head">
+              <div class="dash-card-title">Bottom Line</div>
+              <a class="dash-card-sub" href="404.html" data-target="#files" data-title="Deliverables">All files →</a>
+            </div>
+            <p class="dash-card-sub" style="max-width:720px;">
+              The platform is migrating from the 2019 stack to a modular design system. All
+              strategy and design phases are approved; the engineering team is re-platforming
+              the investor experience and CMS. Launch is scheduled for October 22 with room
+              for a 5-day buffer.
+            </p>
+          </div>
+        </section>
+
+        <!-- ===================== DELIVERABLES & FILES ===================== -->
+        <section class="dash-section" id="files">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Deliverables &amp; Files</h1>
+              <p class="dash-h1-sub">Everything Stackly has shared with you</p>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-pdf"></i></div>
+              <div class="file-name"><b>northlight-strategy-brief.pdf</b><small>PDF · 4.2 MB</small></div>
+              <div class="file-meta"><small>Jul 12, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-image"></i></div>
+              <div class="file-name"><b>style-guide-v3.pdf</b><small>PDF · 18.7 MB</small></div>
+              <div class="file-meta"><small>Aug 02, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-folder2"></i></div>
+              <div class="file-name"><b>design-system-components.zip</b><small>ZIP · 86.4 MB</small></div>
+              <div class="file-meta"><small>Aug 19, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-play"></i></div>
+              <div class="file-name"><b>investor-film-rough-cut.mp4</b><small>MP4 · 612 MB</small></div>
+              <div class="file-meta"><small>Sep 20, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-code"></i></div>
+              <div class="file-name"><b>cms-migration-check.md</b><small>MD · 12 KB</small></div>
+              <div class="file-meta"><small>Sep 24, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== MESSAGES ===================== -->
+        <section class="dash-section" id="messages">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Messages &amp; Communication</h1>
+              <p class="dash-h1-sub">Threads with your Stackly team</p>
+            </div>
+          </div>
+
+          <div class="dash-row two-col" style="grid-template-columns:1fr 1.4fr;">
+            <div class="dash-card">
+              <div class="msg-item is-unread">
+                <div class="dash-avatar" data-initials="MR"></div>
+                <div class="msg-main"><b>Maya Reyes</b><span>Rough cut of the film is ready for you…</span></div>
+                <div class="msg-when">2d</div>
+                <span class="unread-dot"></span>
+              </div>
+              <div class="msg-item">
+                <div class="dash-avatar" data-initials="JT"></div>
+                <div class="msg-main"><b>Jonah Turner</b><span>Brand refresh feedback received — refining now.</span></div>
+                <div class="msg-when">4d</div>
+              </div>
+              <div class="msg-item">
+                <div class="dash-avatar" data-initials="RK"></div>
+                <div class="msg-main"><b>Ravi Kumar</b><span>Migration is on schedule; CMS preview later this week.</span></div>
+                <div class="msg-when">1w</div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-title" style="margin-bottom:14px;">Maya Reyes</div>
+              <div class="act-item" style="border:0; padding:8px 0;">
+                <div class="dash-avatar" data-initials="MR"></div>
+                <div class="act-text"><span>Hey Harper — the rough cut is up for review. Focus points are the first 20 seconds and the data animation. Let me know what lands.</span></div>
+                <div class="act-when">2d</div>
+              </div>
+              <div class="act-item" style="border:0; padding:8px 0; justify-content:flex-end;">
+                <div class="act-text" style="text-align:right;"><span>Just watched it — the edit rhythm feels right. Let's tighten the open and rerun the data animation pass.</span></div>
+                <div class="act-when">1d</div>
+              </div>
+              <div class="act-item" style="border:0; padding:8px 0;">
+                <div class="dash-avatar" data-initials="MR"></div>
+                <div class="act-text"><span>Perfect — new pass lands by Friday. I'll share the changelog with it.</span></div>
+                <div class="act-when">1h</div>
+              </div>
+              <textarea class="dash-textarea" rows="3" placeholder="Write a reply…" style="margin-top:10px;"></textarea>
+              <div style="display:flex; justify-content:flex-end; margin-top:12px;">
+                <button class="dash-btn is-accent" type="button"data-goto-404><i class="bi bi-send"></i> Send Message</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== DOCUMENTS ===================== -->
+        <section class="dash-section" id="documents">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Documents</h1>
+              <p class="dash-h1-sub">Contracts, briefs and signed paperwork for your engagements</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-cloud-arrow-up"></i> Upload</a>
+          </div>
+
+          <div class="dash-card">
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-text"></i></div>
+              <div class="file-name"><b>northlight-msa-signed.pdf</b><small>PDF · 1.8 MB</small></div>
+              <div class="file-meta"><small>Mar 04, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-text"></i></div>
+              <div class="file-name"><b>statement-of-work-rev2.pdf</b><small>PDF · 640 KB</small></div>
+              <div class="file-meta"><small>Apr 18, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-spreadsheet"></i></div>
+              <div class="file-name"><b>project-budget-tracker.xlsx</b><small>XLSX · 92 KB</small></div>
+              <div class="file-meta"><small>Aug 30, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+            <div class="file-item">
+              <div class="file-icon"><i class="bi bi-file-earmark-text"></i></div>
+              <div class="file-name"><b>nda-mutual-2026.pdf</b><small>PDF · 210 KB</small></div>
+              <div class="file-meta"><small>Sep 11, 2026</small><a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i> Download</a></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== SUPPORT ===================== -->
+        <section class="dash-section" id="support">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Support</h1>
+              <p class="dash-h1-sub">Raise a request with your Stackly team · typical reply in under 4 hours</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-plus-lg"></i> New Request</a>
+          </div>
+
+          <div class="dash-cards">
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Open Requests</span><div class="dash-stat-num"><span class="dg-num" data-count="2">2</span></div><span class="dash-delta">1 awaiting your reply</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Avg. First Reply</span><div class="dash-stat-num">3h 12m</div><span class="dash-delta"><i class="bi bi-arrow-down-short"></i> 40m faster</span></div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dtable-wrap">
+              <table class="dtable">
+                <thead>
+                  <tr><th>Request</th><th>Topic</th><th>Raised</th><th>Owner</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="t-main">Invoice #INV-2047 total mismatch</td>
+                    <td class="t-sub">Billing</td>
+                    <td class="t-sub">Sep 26, 2026</td>
+                    <td class="t-sub">Maya Reyes</td>
+                    <td><span class="spill is-warn">Awaiting you</span></td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">CMS editor training session</td>
+                    <td class="t-sub">Training</td>
+                    <td class="t-sub">Sep 18, 2026</td>
+                    <td class="t-sub">Jonah Turner</td>
+                    <td><span class="spill is-success">Resolved</span></td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">Investor film caption review</td>
+                    <td class="t-sub">Content</td>
+                    <td class="t-sub">Sep 09, 2026</td>
+                    <td class="t-sub">Maya Reyes</td>
+                    <td><span class="spill is-success">Resolved</span></td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-head">
+              <div>
+                <div class="dash-card-title">Common Questions</div>
+                <div class="dash-card-sub">Quick answers to the things clients ask most</div>
+              </div>
+            </div>
+            <div class="pmeta"><b>How do revisions work?</b><span>2 rounds per milestone</span></div>
+            <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill is-soft" style="width:100%"></div></div>
+            <div class="pmeta"><b>Who can approve deliverables?</b><span>Any account admin</span></div>
+            <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill is-soft" style="width:100%"></div></div>
+            <div class="pmeta"><b>What are the payment terms?</b><span>Net 14 from invoice</span></div>
+            <div class="dprogress"><div class="dprogress-fill is-soft" style="width:100%"></div></div>
+          </div>
+        </section>
+
+        <!-- ===================== INVOICES ===================== -->
+        <section class="dash-section" id="invoices">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Invoices &amp; Payments</h1>
+              <p class="dash-h1-sub">Billing history for Northlight Capital</p>
+            </div>
+          </div>
+
+          <div class="dash-cards">
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Open Balance</span><div class="dash-stat-num"><span class="dg-num" data-prefix="$" data-count="18500">18,500</span></div><span class="dash-delta">1 invoice</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Paid YTD</span><div class="dash-stat-num"><span class="dg-num" data-prefix="$" data-count="186000">186,000</span></div><span class="dash-delta">12 invoices</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Payment Terms</span><div class="dash-stat-num">Net 30</div><span class="dash-delta">ACH / Card</span></div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dtable-wrap">
+              <table class="dtable">
+                <thead>
+                  <tr><th>Invoice</th><th>Issued</th><th>Due</th><th>Amount</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="t-main">#INV-2041</td><td class="t-sub">Sep 05, 2026</td><td class="t-sub">Oct 05, 2026</td><td class="t-main">$12,000</td>
+                    <td><span class="spill is-warn">Due</span></td>
+                    <td><a class="dash-btn is-accent is-sm" href="404.html">Pay Now</a> <a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">#INV-2038</td><td class="t-sub">Aug 05, 2026</td><td class="t-sub">Sep 05, 2026</td><td class="t-main">$6,500</td>
+                    <td><span class="spill is-success">Paid</span></td>
+                    <td><span class="t-sub">Aug 28</span> <a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">#INV-2035</td><td class="t-sub">Jul 05, 2026</td><td class="t-sub">Aug 05, 2026</td><td class="t-main">$11,000</td>
+                    <td><span class="spill is-success">Paid</span></td>
+                    <td><span class="t-sub">Jul 30</span> <a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">#INV-2031</td><td class="t-sub">Jun 05, 2026</td><td class="t-sub">Jul 05, 2026</td><td class="t-main">$18,000</td>
+                    <td><span class="spill is-success">Paid</span></td>
+                    <td><span class="t-sub">Jun 28</span> <a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">#INV-2028</td><td class="t-sub">May 05, 2026</td><td class="t-sub">Jun 05, 2026</td><td class="t-main">$14,400</td>
+                    <td><span class="spill is-danger">Overdue</span></td>
+                    <td><a class="dash-btn is-accent is-sm" href="404.html">Pay Now</a> <a class="dash-btn is-sm" href="404.html"><i class="bi bi-download"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PROFILE & SETTINGS ===================== -->
+        <section class="dash-section" id="profile">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Profile &amp; Settings</h1>
+              <p class="dash-h1-sub">Your account and notification preferences</p>
+            </div>
+          </div>
+
+          <div class="dash-row two-col">
+            <div class="dash-card">
+              <div class="dash-card-title" style="margin-bottom:16px;">Profile</div>
+              <div style="display:grid; gap:16px;">
+                <div>
+                  <label class="dash-label" for="clName">Full name</label>
+                  <input class="dash-input" id="clName" type="text" value="Harper Quinn" data-user-name />
+                </div>
+                <div>
+                  <label class="dash-label" for="clEmail">Email</label>
+                  <input class="dash-input" id="clEmail" type="email" value="harper@northlightcapital.com" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" data-user-email />
+                  <p class="field-msg" role="alert">
+                    <i class="bi bi-exclamation-circle"></i><span></span>
+                  </p>
+                </div>
+                <div>
+                  <label class="dash-label" for="clCompany">Company</label>
+                  <input class="dash-input" id="clCompany" type="text" value="Northlight Capital" />
+                </div>
+                <div>
+                  <label class="dash-label" for="clPhone">Phone</label>
+                  <input class="dash-input" id="clPhone" type="tel" value="+1 (212) 555-0140" />
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid; gap:16px;">
+              <div class="dash-card">
+                <div class="dash-card-title" style="margin-bottom:8px;">Notifications</div>
+                <div class="set-row"><div><b>Project updates</b><span>When milestones move or files are delivered</span></div><label class="switch"><input type="checkbox" checked /><span class="sw-track"></span></label></div>
+                <div class="set-row"><div><b>Messages</b><span>Direct messages from your project team</span></div><label class="switch"><input type="checkbox" checked /><span class="sw-track"></span></label></div>
+                <div class="set-row"><div><b>Invoices</b><span>When invoices are issued or due</span></div><label class="switch"><input type="checkbox" checked /><span class="sw-track"></span></label></div>
+                <div class="set-row"><div><b>Newsletter</b><span>Occasional thought leadership from the studio</span></div><label class="switch"><input type="checkbox" /><span class="sw-track"></span></label></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-title" style="margin-bottom:16px;">Security</div>
+                <div style="display:grid; gap:16px;">
+                  <div>
+                    <label class="dash-label" for="clPw">New password</label>
+                    <input class="dash-input" id="clPw" type="password" />
+                  </div>
+                  <div>
+                    <label class="dash-label" for="clPw2">Confirm password</label>
+                    <input class="dash-input" id="clPw2" type="password" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px;">
+            <a class="dash-btn is-accent" href="404.html">Save Changes</a>
+            <a class="dash-btn" href="404.html">Cancel</a>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+    <script src="js/email-validate.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

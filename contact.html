@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Get in touch with STACKLY — start a project, ask a question, or just say hello." />
+  <title>Contact — STACKLY Creative Agency</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="preload" as="image" href="images/c11.webp" fetchpriority="high" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body class="theme-stackly" data-page="contact">
+
+  <!--INCLUDE:header-->
+<header class="site-nav" id="siteNav">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Stackly home">
+        <img src="images/logo-yellow.webp" alt="Stackly" class="brand-logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-line"></span>
+        <span class="toggler-line"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="case-studies.html">Case Studies</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="login.html" class="nav-cta">Login <i class="bi bi-box-arrow-in-right"></i></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<!--/INCLUDE:header-->
+
+  <main>
+
+    <!-- ===================== 01 PAGE HERO ===================== -->
+    <section class="page-hero">
+      <div class="hero-bg">
+        <div class="hero-photo hero-photo--contact"></div>
+        <div class="hero-photo-scrim hero-photo-scrim--strong"></div>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-accents"></div>
+      </div>
+      <div class="container">
+        <p class="hero-eyebrow page-hero-eyebrow">Let's Talk</p>
+        <h1 class="page-title">Tell us about your <em>next big thing</em></h1>
+        <p class="page-hero-desc">
+          Whether it's a full brand build or a refresh, we'd love to hear where you are —
+          and where you're <span class="text-accent">trying to go</span>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== 02 CONTACT ===================== -->
+    <section class="section contact section--light" id="contact">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <div data-reveal-stagger="0.1">
+              <p class="section-eyebrow">Get In Touch</p>
+              <h2 class="section-title">Let's create something <em>worth talking about</em></h2>
+              <p class="section-text">
+                Fill out the form and we'll get back to you within one business day.
+                Prefer email or a no-pressure call? We're all ears either way.
+              </p>
+            </div>
+            <ul class="contact-list" data-reveal-stagger="0.08">
+              <li>
+                <a href="mailto:hello@stackly.studio">
+                  <i class="bi bi-envelope"></i>
+                  <span>hello@stackly.studio</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+12125550137">
+                  <i class="bi bi-telephone"></i>
+                  <span>+1 (212) 555-0137</span>
+                </a>
+              </li>
+              <li>
+                <span>
+                  <i class="bi bi-geo-alt"></i>
+                  <span>88 Mercer Street, New York, NY</span>
+                </span>
+              </li>
+            </ul>
+            <div class="contact-social" data-reveal-stagger="0.07">
+              <a href="404.html" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="404.html" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="404.html" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+              <a href="404.html" aria-label="Behance"><i class="bi bi-behance"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="row g-4" data-reveal-stagger="0.09">
+                <div class="col-md-6">
+                  <label class="form-label" for="contactName">Your Name</label>
+                  <input class="form-control" type="text" id="contactName" name="contactName" data-name-field placeholder="Jane Smith" autocomplete="name" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="contactNameMsg" required />
+                  <p class="field-msg" id="contactNameMsg" role="alert">
+                    <i class="bi bi-exclamation-circle"></i><span></span>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="contactEmail">Email Address</label>
+                  <input class="form-control" type="email" id="contactEmail" name="contactEmail" placeholder="jane@company.com" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" required />
+                  <p class="field-msg" role="alert">
+                    <i class="bi bi-exclamation-circle"></i><span></span>
+                  </p>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="contactSubject">What Do You Need?</label>
+                  <select class="form-select" id="contactSubject" name="contactSubject">
+                    <option selected>Project Inquiry</option>
+                    <option>Branding</option>
+                    <option>UI/UX Design</option>
+                    <option>Web Design</option>
+                    <option>Creative Direction</option>
+                    <option>Digital Marketing</option>
+                    <option>Something Else</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="contactMessage">Project Details</label>
+                  <textarea class="form-control" id="contactMessage" name="contactMessage" rows="5" placeholder="Tell us about your goals, timeline, and budget…" aria-describedby="contactMessageMsg" required></textarea>
+                  <p class="field-msg" id="contactMessageMsg" role="alert">
+                    <i class="bi bi-exclamation-circle"></i><span></span>
+                  </p>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-solid btn-solid--accent">Send Message <i class="bi bi-arrow-up-right"></i></button>
+                  <div id="formSuccess" class="form-success d-none"><p><i class="bi bi-check2-circle"></i> Thanks! Your message has been sent — we'll be in touch within one business day.</p></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 03 WHAT HAPPENS NEXT ===================== -->
+    <section class="section process" id="next">
+      <div class="container">
+        <div class="section-head" data-reveal-stagger="0.1">
+          <p class="section-eyebrow">What Happens Next</p>
+          <h2 class="section-title">From hello to <em>launch</em></h2>
+        </div>
+        <div class="process-grid">
+          <div class="process-step">
+            <span class="process-num">01</span>
+            <h3>Discovery Call</h3>
+            <p>30 minutes to understand your goals, timeline, and what success looks like.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">02</span>
+            <h3>Proposal</h3>
+            <p>A fixed quote and clear scope — no vague estimates, no hidden costs.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">03</span>
+            <h3>Kickoff</h3>
+            <p>We bring your team and ours into one room and set the roadmap together.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">04</span>
+            <h3>Build &amp; Iterate</h3>
+            <p>Weekly sprints with honest feedback loops — you always see the work.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">05</span>
+            <h3>Launch &amp; Grow</h3>
+            <p>We ship, measure, and refine so the momentum keeps building.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 04 MAP ===================== -->
+    <section class="section section--light map" id="map">
+      <div class="container" data-reveal-stagger="0.12">
+        <div class="map-note">
+          <p class="section-eyebrow">Find Us</p>
+          <h2 class="section-title">Based in the <em>heart of Soho</em></h2>
+        </div>
+        <div class="map-frame">
+          <iframe
+            title="STACKLY studio location"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0110%2C40.7175%2C-73.9900%2C40.7275&layer=mapnik&marker=40.7225%2C-74.0005"
+            loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 05 REACH US ===================== -->
+    <section class="section" id="reach">
+      <div class="container">
+        <div class="section-head" data-reveal-stagger="0.1">
+          <p class="section-eyebrow">Reach Us</p>
+          <h2 class="section-title">Every way to get <em>in touch</em></h2>
+        </div>
+        <div class="row g-4" data-reveal-stagger="0.09">
+          <div class="col-md-6 col-lg-3">
+            <a class="reach-card" href="mailto:hello@stackly.studio">
+              <span class="reach-icon"><i class="bi bi-envelope"></i></span>
+              <span class="reach-value">hello@stackly.studio</span>
+              <span class="reach-label">Email</span>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <a class="reach-card" href="tel:+12125550137">
+              <span class="reach-icon"><i class="bi bi-telephone"></i></span>
+              <span class="reach-value">+1 (212) 555-0137</span>
+              <span class="reach-label">Phone</span>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <a class="reach-card" href="https://maps.google.com/?q=88+Mercer+Street+New+York,+NY" target="_blank" rel="noopener">
+              <span class="reach-icon"><i class="bi bi-geo-alt"></i></span>
+              <span class="reach-value">88 Mercer Street</span>
+              <span class="reach-label">New York Studio</span>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <span class="reach-card">
+              <span class="reach-icon"><i class="bi bi-alarm"></i></span>
+              <span class="reach-value">Mon–Fri, 9–18 ET</span>
+              <span class="reach-label">Office Hours</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 06 FAQ ===================== -->
+    <section class="section section--light" id="faq">
+      <div class="container">
+        <div class="section-head" data-reveal-stagger="0.1">
+          <p class="section-eyebrow">Good To Know</p>
+          <h2 class="section-title">Quick <em>questions</em></h2>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="accordion faq-accordion" id="contactFaq" data-reveal-stagger="0.08">
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cfOne" aria-expanded="true" aria-controls="cfOne">
+                    How quickly will you reply?
+                  </button>
+                </h3>
+                <div id="cfOne" class="accordion-collapse collapse show" data-bs-parent="#contactFaq">
+                  <div class="accordion-body">
+                    Within one business day, always. If your project is urgent, call us — the phone is answered by a human, not a menu.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfTwo" aria-expanded="false" aria-controls="cfTwo">
+                    Do you work with early-stage startups?
+                  </button>
+                </h3>
+                <div id="cfTwo" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                  <div class="accordion-body">
+                    Yes. Around a third of our clients are startups, and our project-based model is designed to fit earlier budgets with no lock-in.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfThree" aria-expanded="false" aria-controls="cfThree">
+                    Can you sign an NDA?
+                  </button>
+                </h3>
+                <div id="cfThree" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                  <div class="accordion-body">
+                    Of course. Share your NDA ahead of the call or we'll send you our standard mutual one — signed before we discuss anything sensitive.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfFour" aria-expanded="false" aria-controls="cfFour">
+                    Do you take on smaller projects or site fixes?
+                  </button>
+                </h3>
+                <div id="cfFour" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                  <div class="accordion-body">
+                    Yes — through mini engagements and our monthly retainer. Tell us the scope and we'll recommend the smallest sensible option.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfFive" aria-expanded="false" aria-controls="cfFive">
+                    What happens after I send the form?
+                  </button>
+                </h3>
+                <div id="cfFive" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                  <div class="accordion-body">
+                    You'll hear from us within one business day to book a 30-minute discovery call. From there, the steps are: proposal, kickoff, build, and launch.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 07 FAREWELL QUOTE ===================== -->
+    <section class="section" id="farewell">
+      <div class="container">
+        <div class="quote-inner" data-reveal>
+          <p class="quote-large">
+            "Great work happens when strategy meets ambition. Let's find out what
+            that looks like for <em>your</em> brand."
+          </p>
+          <p class="quote-author">The STACKLY Team</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 08 CTA ===================== -->
+    <section class="section cta" id="cta">
+      <div class="container">
+        <div class="cta-inner" data-reveal>
+          <p class="section-eyebrow">Prefer Email?</p>
+          <h2 class="cta-title">Reach us directly at <em>hello@stackly.studio</em></h2>
+          <p class="cta-desc">Tell us where you want to go and we'll build the brand to get you there.</p>
+          <a href="404.html" class="btn-solid btn-solid--accent">Send an Email <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== BACK TO TOP ===================== -->
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!--INCLUDE:newsletter-->
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="section section--light newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner" data-reveal>
+      <span class="newsletter-ghost" aria-hidden="true">Subscribe</span>
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <p class="section-eyebrow">The Monthly Dispatch</p>
+          <h2 class="newsletter-title">Stay Inspired. <em>Stay Ahead.</em></h2>
+          <p class="newsletter-text">
+            One considered email a month on the ideas, systems, and craft behind the work.
+            No noise, no recycled threads &mdash; just the things worth your attention.
+          </p>
+          <ul class="newsletter-points">
+            <li><i class="bi bi-stars"></i> Brand and design thinking, unpacked</li>
+            <li><i class="bi bi-clock-history"></i> Roughly four minutes, once a month</li>
+            <li><i class="bi bi-shield-check"></i> Unsubscribe in a single click</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="newsletter-card">
+            <form class="newsletter-form" id="newsletterForm" novalidate>
+              <label class="newsletter-label" for="nlEmail">Email address</label>
+              <input
+                class="form-control newsletter-input"
+                type="email"
+                id="nlEmail"
+                name="nlEmail"
+                placeholder="you@company.com"
+                autocomplete="email"
+                autocapitalize="off"
+                autocorrect="off"
+                spellcheck="false"
+                required
+              />
+              <p class="field-msg" role="alert">
+                <i class="bi bi-exclamation-circle"></i><span></span>
+              </p>
+              <button type="submit" class="btn-solid btn-solid--accent newsletter-btn">
+                Subscribe <i class="bi bi-arrow-right"></i>
+              </button>
+            </form>
+            <p class="newsletter-note d-none" id="newsletterNote">
+              <i class="bi bi-check2-circle"></i> Thanks for subscribing &mdash; see you in your inbox.
+            </p>
+            <p class="newsletter-privacy">We only send the monthly dispatch. Nothing else, ever.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/INCLUDE:newsletter-->
+
+  <!--INCLUDE:footer-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <a class="brand brand-footer" href="index.html" aria-label="Stackly home">
+          <img src="images/logo-yellow.webp" alt="Stackly" class="brand-logo" />
+        </a>
+        <p class="footer-desc">
+          A strategy-led creative agency designing brands that make an impact —
+          identity, digital experiences, and stories worth sharing.
+        </p>
+        <div class="footer-social">
+          <a href="404.html" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="404.html" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+          <a href="404.html" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="404.html" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+          <a href="404.html" aria-label="Behance"><svg class="footer-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="404.html">Branding</a></li>
+          <li><a href="404.html">UI/UX Design</a></li>
+          <li><a href="404.html">Web Design</a></li>
+          <li><a href="404.html">Creative Direction</a></li>
+          <li><a href="404.html">Digital Marketing</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Resources</h4>
+        <ul class="footer-links">
+          <li><a href="404.html">FAQ</a></li>
+          <li><a href="404.html">Blog</a></li>
+          <li><a href="404.html">Careers</a></li>
+          <li><a href="404.html">Press</a></li>
+          <li><a href="404.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Get in Touch</h4>
+        <ul class="footer-links">
+          <li><a href="404.html"><i class="bi bi-envelope"></i>hello@stackly.studio</a></li>
+          <li><a href="404.html"><i class="bi bi-telephone"></i>+1 (212) 555-0137</a></li>
+          <li><a href="404.html"><i class="bi bi-geo-alt"></i>88 Mercer Street, New York</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 STACKLY Studio. All rights reserved.</p>
+      <p>Designed with <i class="bi bi-heart-fill"></i> in New York</p>
+    </div>
+  </div>
+</footer>
+<!--/INCLUDE:footer-->
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/email-validate.js"></script>
+    <script src="js/name-validate.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

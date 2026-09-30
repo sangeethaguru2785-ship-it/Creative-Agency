@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Sign in to your Stackly dashboard." />
+  <title>Login | STACKLY</title>
+  <script>document.documentElement.className += " js";</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/auth.css" rel="stylesheet" />
+</head>
+<body class="theme-stackly" data-page="login">
+
+  <div class="auth-wrap">
+
+    <!-- ============ SPLIT LAYOUT ============ -->
+    <div class="auth-split">
+
+      <!-- ============ SHOWCASE PANEL ============ -->
+      <aside class="auth-showcase" aria-labelledby="authShowcaseTitle">
+        <span class="auth-showcase-media"></span>
+        <div class="auth-showcase-content">
+          <div class="auth-showcase-top">
+            <a class="auth-logo auth-logo--showcase" href="index.html" aria-label="Stackly home">
+              <img src="images/logo-yellow.webp" alt="Stackly" />
+            </a>
+
+            <span class="auth-showcase-eyebrow">Built to grow</span>
+            <h3 id="authShowcaseTitle">Bring bold ideas to life</h3>
+            <p>STACKLY pairs strategy, identity, and digital craft to help ambitious brands stand out and convert without losing their edge.</p>
+
+            <div class="auth-showcase-cta">
+              <h4 class="auth-showcase-cta-title">Pick up where you left off</h4>
+              <p class="auth-showcase-cta-text">Briefs, revisions and whatever you shipped last are all still here.</p>
+              <p class="auth-showcase-cta-meta"><span class="auth-showcase-dot"></span>Secure sign-in &middot; Two-factor ready</p>
+            </div>
+          </div>
+          <div class="auth-showcase-foot">
+            <span class="auth-showcase-link">
+              Start a project <i class="bi bi-arrow-up-right"></i>
+            </span>
+            <div class="auth-showcase-meta">
+              <span class="auth-showcase-chip">120+ projects shipped</span>
+              <span class="auth-showcase-chip">12+ years of craft</span>
+              <span class="auth-showcase-chip">45 brands grown</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ============ FORM PANEL ============ -->
+      <main class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-card-head">
+          <h2>Welcome back</h2>
+          <p>Sign in to your workspace to continue.</p>
+        </div>
+
+        <form novalidate>
+          <div class="auth-row">
+            <div class="auth-field">
+              <span class="auth-label" id="roleLabel">Account type</span>
+              <div class="role-seg" role="radiogroup" aria-labelledby="roleLabel">
+                <input type="radio" name="role" id="roleAdmin" value="admin" checked />
+                <label for="roleAdmin">Admin</label>
+                <input type="radio" name="role" id="roleClient" value="client" />
+                <label for="roleClient">Client</label>
+              </div>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-label" for="loginEmail">Email</label>
+              <input class="auth-input" type="email" id="loginEmail" name="email" placeholder="you@company.com" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+              <span class="field-msg" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></span>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-label" for="loginPassword">Password</label>
+              <div class="auth-password">
+                <input class="auth-input" type="password" id="loginPassword" name="password" minlength="8" placeholder="Your password" autocomplete="current-password" aria-describedby="loginPasswordMsg" />
+                <button class="auth-toggle" type="button" data-target="loginPassword" aria-label="Show password"><i class="bi bi-eye"></i></button>
+              </div>
+              <span class="field-msg" id="loginPasswordMsg" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></span>
+              <div class="pw-hint" data-pw-rules-for="loginPassword"></div>
+            </div>
+          </div>
+
+          <div class="auth-meta">
+            <label class="auth-check">
+              <input type="checkbox" name="remember" aria-describedby="rememberMsg" />
+              <span class="cb"><i class="bi bi-check"></i></span>
+              Remember me
+            </label>
+            <a class="auth-link" href="404.html">Forgot Password?</a>
+          </div>
+          <span class="field-msg" id="rememberMsg" role="alert" style="margin-top:10px;"><i class="bi bi-exclamation-circle"></i><span></span></span>
+
+          <button class="auth-btn" type="submit">Login <i class="bi bi-arrow-right"></i></button>
+
+          <div class="auth-success" id="authSuccess" role="status"><i class="bi bi-check2-circle"></i><span>Success — taking you to your dashboard…</span></div>
+          <p class="auth-err" id="authErr" role="alert"><i class="bi bi-exclamation-triangle"></i> Please fix the highlighted fields to log in.</p>
+        </form>
+
+        <p class="auth-switch">
+          Don't have an account? <a class="auth-link" href="signup.html">Sign up free</a>
+        </p>
+
+        <a class="auth-home" href="index.html"><i class="bi bi-house-door"></i> Back to Home</a>
+      </div>
+      </main>
+    </div>
+  </div>
+
+    <script src="js/email-validate.js"></script>
+    <script src="js/password-validate.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

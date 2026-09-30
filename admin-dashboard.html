@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Stackly admin dashboard — manage projects, clients, services and team.">
+  <title>Admin Dashboard | STACKLY Creative Agency</title>
+  <script>document.documentElement.className += " js";</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dashboard.css" rel="stylesheet">
+</head>
+<body class="theme-stackly" data-page="admin-dashboard">
+
+  <div class="dash-shell" id="dashShell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="dash-sidebar" id="dashSidebar">
+      <a class="dash-logo" href="index.html" aria-label="Stackly home">
+        <img src="images/logo-yellow.webp" alt="Stackly" class="brand-logo">
+      </a>
+
+      <nav class="dash-nav" aria-label="Admin navigation">
+        <div class="dash-group-title">Menu</div>
+        <a class="dash-link is-active" href="#overview" data-target="#overview" data-title="Overview"><i class="bi bi-grid-1x2"></i><span>Overview</span></a>
+        <a class="dash-link" href="#projects" data-target="#projects" data-title="Projects"><i class="bi bi-diagram-3"></i><span>Projects</span></a>
+        <a class="dash-link" href="#clients" data-target="#clients" data-title="Clients"><i class="bi bi-people"></i><span>Clients</span></a>
+        <a class="dash-link" href="#services" data-target="#services" data-title="Services"><i class="bi bi-sliders"></i><span>Services</span></a>
+        <a class="dash-link" href="#cases" data-target="#cases" data-title="Case Studies"><i class="bi bi-journal-richtext"></i><span>Case Studies</span></a>
+        <a class="dash-link" href="#messages" data-target="#messages" data-title="Messages"><i class="bi bi-envelope"></i><span>Messages</span></a>
+        <a class="dash-link" href="#team" data-target="#team" data-title="Team"><i class="bi bi-person-badge"></i><span>Team</span></a>
+        <a class="dash-link" href="#analytics" data-target="#analytics" data-title="Analytics"><i class="bi bi-graph-up-arrow"></i><span>Analytics</span></a>
+        <a class="dash-link" href="#reports" data-target="#reports" data-title="Reports"><i class="bi bi-bar-chart-line"></i><span>Reports</span></a>
+        <a class="dash-link" href="#activity" data-target="#activity" data-title="Activity Log"><i class="bi bi-clock-history"></i><span>Activity Log</span></a>
+
+        <div class="dash-group-title">System</div>
+        <a class="dash-link" href="#settings" data-target="#settings" data-title="Settings"><i class="bi bi-gear"></i><span>Settings</span></a>
+      </nav>
+
+      <div class="dash-side-foot">
+        <a class="dash-link is-logout" href="login.html" data-logout="" aria-label="Logout"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+        <a class="dash-link" href="index.html"><i class="bi bi-house"></i><span>Go To Home</span></a>
+      </div>
+    </aside>
+    <div class="dash-overlay" id="dashOverlay"></div>
+
+    <!-- ============ MAIN ============ -->
+    <div class="dash-main">
+      <header class="dash-topbar">
+        <button class="dash-menu-btn" id="dashMenuBtn" aria-label="Toggle menu"><i class="bi bi-list"></i></button>
+        <div class="dash-crumb" id="dashCrumb">Stackly / <b>Overview</b></div>
+        <div class="dash-topbar-spacer"></div>
+        <div class="dash-user" data-user-chip="" title="Maya Reyes">
+          <div class="dash-avatar" data-user-avatar="" data-initials="MR">MR</div>
+          <div class="dash-user-meta"><b data-user-name="">Maya Reyes</b><small data-user-email="">maya@stackly.studio</small></div>
+        </div>
+      </header>
+
+      <main class="dash-content">
+
+        <!-- ===================== OVERVIEW ===================== -->
+        <section class="dash-section active" id="overview">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Welcome back, <span data-user-first="">Maya</span></h1>
+              <p class="dash-h1-sub">Here's what's happening across Stackly today.</p>
+            </div>
+          </div>
+
+          <div class="dash-cards">
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">Monthly Revenue</span>
+              <div class="dash-stat-num"><span class="dg-num" data-prefix="$" data-count="212400">$212,400</span></div>
+              <span class="dash-delta"><i class="bi bi-arrow-up-short"></i> 8.2% vs last month</span>
+            </div>
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">Active Projects</span>
+              <div class="dash-stat-num"><span class="dg-num" data-count="24">24</span></div>
+              <span class="dash-delta"><i class="bi bi-arrow-up-short"></i> +3 this quarter</span>
+            </div>
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">New Inquiries</span>
+              <div class="dash-stat-num"><span class="dg-num" data-count="12">12</span></div>
+              <span class="dash-delta"><i class="bi bi-arrow-up-short"></i> +5 this week</span>
+            </div>
+            <div class="dash-card dash-stat">
+              <span class="dash-stat-label">Team Members</span>
+              <div class="dash-stat-num"><span class="dg-num" data-count="14">14</span></div>
+              <span class="dash-delta">6 available</span>
+            </div>
+          </div>
+
+          <div class="dash-row two-col">
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div>
+                  <div class="dash-card-title">Revenue</div>
+                  <div class="dash-card-sub">Last 8 months — recurring + project</div>
+                </div>
+                <span class="spill is-success">+38%</span>
+              </div>
+              <div class="chart-bars">
+                <div class="chart-bar-wrap"><div class="chart-bar" style="--h:46%"></div><span class="chart-label">Feb</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="--h:62%"></div><span class="chart-label">Mar</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="--h:55%"></div><span class="chart-label">Apr</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="--h:78%"></div><span class="chart-label">May</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="--h:70%"></div><span class="chart-label">Jun</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="--h:92%"></div><span class="chart-label">Jul</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar" style="--h:84%"></div><span class="chart-label">Aug</span></div>
+                <div class="chart-bar-wrap"><div class="chart-bar is-soft" style="--h:100%"></div><span class="chart-label">Sep</span></div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div>
+                  <div class="dash-card-title">Projects by Service</div>
+                  <div class="dash-card-sub">48 active engagements</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:22px;">
+                <div class="donut" style="--c1:38; --c2:26; --c3:20; --c4:16;" role="img" aria-label="38% branding, 26% digital, 20% campaign, 16% consulting">
+                  <div class="donut-inner"><div class="donut-center-num">48</div><div class="donut-label">Projects</div></div>
+                </div>
+                <div class="legend">
+                  <div class="legend-item"><span class="legend-dot"></span>Branding<small>38%</small></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#8a8a8a"></span>Digital<small>26%</small></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#5f5f5f"></span>Campaign<small>20%</small></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#262626; border:1px solid var(--border);"></span>Consulting<small>16%</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-row two-col">
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div class="dash-card-title">Recent Inquiries</div>
+                <a class="dash-card-sub" href="404.html" data-target="#messages" data-title="Messages">View all —</a>
+              </div>
+              <div class="dtable-wrap">
+                <table class="dtable">
+                  <thead>
+                    <tr><th>From</th><th>Topic</th><th>Budget</th><th>Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="t-main">Lumen Labs</td>
+                      <td class="t-sub">Rebrand + web</td>
+                      <td class="t-sub">$18k – 24k</td>
+                      <td><span class="spill is-warn">New</span></td>
+                    </tr>
+                    <tr>
+                      <td class="t-main">Field &amp; Co.</td>
+                      <td class="t-sub">Brand identity</td>
+                      <td class="t-sub">$12k</td>
+                      <td><span class="spill is-warn">Follow-up</span></td>
+                    </tr>
+                    <tr>
+                      <td class="t-main">Arva Studio</td>
+                      <td class="t-sub">Campaign 2027</td>
+                      <td class="t-sub">$40k</td>
+                      <td><span class="spill is-idle">Quoted</span></td>
+                    </tr>
+                    <tr>
+                      <td class="t-main">Northlight</td>
+                      <td class="t-sub">Platform build</td>
+                      <td class="t-sub">$60k+</td>
+                      <td><span class="spill is-success">Won</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-head">
+                <div class="dash-card-title">Top Projects</div>
+                <a class="dash-card-sub" href="404.html" data-target="#projects" data-title="Projects">Manage —</a>
+              </div>
+              <div style="display:grid; gap:16px;">
+                <div>
+                  <div class="pmeta"><b>Northlight Platform</b><span>92%</span></div>
+                  <div class="dprogress"><div class="dprogress-fill" style="width:92%"></div></div>
+                </div>
+                <div>
+                  <div class="pmeta"><b>Element Rebrand</b><span>78%</span></div>
+                  <div class="dprogress"><div class="dprogress-fill" style="width:78%"></div></div>
+                </div>
+                <div>
+                  <div class="pmeta"><b>Verve Packaging</b><span>64%</span></div>
+                  <div class="dprogress"><div class="dprogress-fill" style="width:64%"></div></div>
+                </div>
+                <div>
+                  <div class="pmeta"><b>House of Ivory</b><span>45%</span></div>
+                  <div class="dprogress"><div class="dprogress-fill is-soft" style="width:45%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PROJECTS ===================== -->
+        <section class="dash-section" id="projects">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Projects</h1>
+              <p class="dash-h1-sub">38 total — 24 active — 6 in review — 8 completed</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-plus-lg"></i> New Project</a>
+          </div>
+
+          <div class="dash-card">
+            <div class="dtable-wrap">
+              <table class="dtable">
+                <thead>
+                  <tr><th>Project</th><th>Client</th><th>Service</th><th>Progress</th><th>Status</th><th>Due</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="t-main">Northlight Platform</td>
+                    <td class="t-sub">Northlight Capital</td>
+                    <td class="t-sub">Digital</td>
+                    <td><div class="dprogress" style="width:120px;"><div class="dprogress-fill" style="width:92%"></div></div></td>
+                    <td><span class="spill is-success">Active</span></td>
+                    <td class="t-sub">Oct 22</td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">Element Rebrand</td>
+                    <td class="t-sub">Element Audio</td>
+                    <td class="t-sub">Branding</td>
+                    <td><div class="dprogress" style="width:120px;"><div class="dprogress-fill" style="width:78%"></div></div></td>
+                    <td><span class="spill is-warn">Review</span></td>
+                    <td class="t-sub">Oct 05</td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">Verve Packaging</td>
+                    <td class="t-sub">Verve Cosmetics</td>
+                    <td class="t-sub">Branding</td>
+                    <td><div class="dprogress" style="width:120px;"><div class="dprogress-fill" style="width:64%"></div></div></td>
+                    <td><span class="spill is-warn">On track</span></td>
+                    <td class="t-sub">Nov 01</td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">House of Ivory</td>
+                    <td class="t-sub">Ivory &amp; Co.</td>
+                    <td class="t-sub">Campaign</td>
+                    <td><div class="dprogress" style="width:120px;"><div class="dprogress-fill is-soft" style="width:45%"></div></div></td>
+                    <td><span class="spill is-idle">Paused</span></td>
+                    <td class="t-sub">Dec 10</td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">Meridian Identity</td>
+                    <td class="t-sub">Meridian Group</td>
+                    <td class="t-sub">Branding</td>
+                    <td><div class="dprogress" style="width:120px;"><div class="dprogress-fill" style="width:100%"></div></div></td>
+                    <td><span class="spill is-success">Completed</span></td>
+                    <td class="t-sub">Done</td>
+                    <td><a class="dt-action" href="404.html" aria-label="View"><i class="bi bi-eye"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== CLIENTS ===================== -->
+        <section class="dash-section" id="clients">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Clients</h1>
+              <p class="dash-h1-sub">36 active accounts — $1.9M annual retainer value</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-plus-lg"></i> Add Client</a>
+          </div>
+
+          <div class="dash-card">
+            <div class="dtable-wrap">
+              <table class="dtable">
+                <thead>
+                  <tr><th>Company</th><th>Contact</th><th>Since</th><th>Projects</th><th>Retainer</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="t-main">Northlight Capital</td><td class="t-sub">Harper Quinn</td><td class="t-sub">2021</td><td class="t-sub">4</td><td class="t-sub">$24,000/mo</td><td><span class="spill is-success">Active</span></td></tr>
+                  <tr><td class="t-main">Element Audio</td><td class="t-sub">Derek Vaughn</td><td class="t-sub">2022</td><td class="t-sub">3</td><td class="t-sub">$12,500/mo</td><td><span class="spill is-success">Active</span></td></tr>
+                  <tr><td class="t-main">Verve Cosmetics</td><td class="t-sub">Lena Ortiz</td><td class="t-sub">2023</td><td class="t-sub">2</td><td class="t-sub">$15,000/mo</td><td><span class="spill is-warn">On hold</span></td></tr>
+                  <tr><td class="t-main">Ivory &amp; Co.</td><td class="t-sub">Simon Bell</td><td class="t-sub">2020</td><td class="t-sub">6</td><td class="t-sub">$8,000/mo</td><td><span class="spill is-warn">Renewing</span></td></tr>
+                  <tr><td class="t-main">Fenwick Labs</td><td class="t-sub">Ava Simmons</td><td class="t-sub">2024</td><td class="t-sub">1</td><td class="t-sub">$9,000/mo</td><td><span class="spill is-success">Active</span></td></tr>
+                  <tr><td class="t-main">Onyx &amp; Field</td><td class="t-sub">Marcus Lee</td><td class="t-sub">2019</td><td class="t-sub">8</td><td class="t-sub">$18,000/mo</td><td><span class="spill is-success">Active</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== SERVICES ===================== -->
+        <section class="dash-section" id="services">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Services</h1>
+              <p class="dash-h1-sub">Toggle what's currently offered and live</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-plus-lg"></i> Add Service</a>
+          </div>
+
+          <div class="svc-row">
+            <div class="svc-main"><b>Brand Identity</b><span>Strategy, logo, identity systems and guidelines.</span></div>
+            <div class="svc-meta"><b>4</b> active projects</div>
+            <div class="svc-meta" style="text-align:left;"><b>$36k</b> avg. rate</div>
+            <span class="spill is-success">Live</span>
+            <label class="switch"><input type="checkbox" checked=""><span class="sw-track"></span></label>
+          </div>
+          <div class="svc-row">
+            <div class="svc-main"><b>UI/UX &amp; Digital</b><span>Product design, web platforms and design systems.</span></div>
+            <div class="svc-meta"><b>6</b> active projects</div>
+            <div class="svc-meta" style="text-align:left;"><b>$58k</b> avg. rate</div>
+            <span class="spill is-success">Live</span>
+            <label class="switch"><input type="checkbox" checked=""><span class="sw-track"></span></label>
+          </div>
+          <div class="svc-row">
+            <div class="svc-main"><b>Campaigns</b><span>Integrated launch campaigns and creative direction.</span></div>
+            <div class="svc-meta"><b>3</b> active projects</div>
+            <div class="svc-meta" style="text-align:left;"><b>$44k</b> avg. rate</div>
+            <span class="spill is-success">Live</span>
+            <label class="switch"><input type="checkbox" checked=""><span class="sw-track"></span></label>
+          </div>
+          <div class="svc-row">
+            <div class="svc-main"><b>Motion &amp; 3D</b><span>Film, motion identity and product visualization.</span></div>
+            <div class="svc-meta"><b>2</b> active projects</div>
+            <div class="svc-meta" style="text-align:left;"><b>$32k</b> avg. rate</div>
+            <span class="spill is-success">Live</span>
+            <label class="switch"><input type="checkbox" checked=""><span class="sw-track"></span></label>
+          </div>
+          <div class="svc-row">
+            <div class="svc-main"><b>Consulting</b><span>Strategy sprints, audits and fractional creative direction.</span></div>
+            <div class="svc-meta"><b>1</b> active project</div>
+            <div class="svc-meta" style="text-align:left;"><b>$18k</b> avg. rate</div>
+            <span class="spill is-warn">Paused</span>
+            <label class="switch"><input type="checkbox"><span class="sw-track"></span></label>
+          </div>
+        </section>
+
+        <!-- ===================== CASE STUDIES ===================== -->
+        <section class="dash-section" id="cases">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Case Studies</h1>
+              <p class="dash-h1-sub">Published stories on work.html and the case study archive</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-plus-lg"></i> New Story</a>
+          </div>
+
+          <div class="dash-card">
+            <div class="dtable-wrap">
+              <table class="dtable">
+                <thead>
+                  <tr><th>Title</th><th>Client</th><th>Year</th><th>Views</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="t-main">Northlight: A Platform Reimagined</td><td class="t-sub">Northlight Capital</td><td class="t-sub">2026</td><td class="t-sub">41.2k</td><td><span class="spill is-success">Published</span></td><td><a class="dt-action" href="404.html"><i class="bi bi-pencil"></i></a></td></tr>
+                  <tr><td class="t-main">Element: Sound in Material</td><td class="t-sub">Element Audio</td><td class="t-sub">2025</td><td class="t-sub">29.8k</td><td><span class="spill is-success">Published</span></td><td><a class="dt-action" href="404.html"><i class="bi bi-pencil"></i></a></td></tr>
+                  <tr><td class="t-main">Verve: The Unboxing Effect</td><td class="t-sub">Verve Cosmetics</td><td class="t-sub">2025</td><td class="t-sub">18.4k</td><td><span class="spill is-warn">Draft</span></td><td><a class="dt-action" href="404.html"><i class="bi bi-pencil"></i></a></td></tr>
+                  <tr><td class="t-main">Meridian: Rebuilding Trust in Finance</td><td class="t-sub">Meridian Group</td><td class="t-sub">2024</td><td class="t-sub">33.1k</td><td><span class="spill is-success">Published</span></td><td><a class="dt-action" href="404.html"><i class="bi bi-pencil"></i></a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== MESSAGES ===================== -->
+        <section class="dash-section" id="messages">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Messages &amp; Inquiries</h1>
+              <p class="dash-h1-sub">8 unread — sourced from contact form and project threads</p>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="msg-list">
+              <div class="msg-item is-unread">
+                <div class="dash-avatar" data-initials="LL">LL</div>
+                <div class="msg-main"><b>Lumen Labs</b><span>Looking for a partner to redesign our site ahead of the Series B — budgets $18k–24k…</span></div>
+                <div class="msg-when">Now</div>
+                <span class="unread-dot"></span>
+              </div>
+              <div class="msg-item is-unread">
+                <div class="dash-avatar" data-initials="FC">FC</div>
+                <div class="msg-main"><b>Field &amp; Co.</b><span>Follow-up on the identity proposal — can we review the logo routes this week?</span></div>
+                <div class="msg-when">24m</div>
+                <span class="unread-dot"></span>
+              </div>
+              <div class="msg-item">
+                <div class="dash-avatar" data-initials="AS">AS</div>
+                <div class="msg-main"><b>Arva Studio</b><span>Quote accepted for the 2030 campaign — sending the PO now.</span></div>
+                <div class="msg-when">3h</div>
+              </div>
+              <div class="msg-item is-unread">
+                <div class="dash-avatar" data-initials="HQ">HQ</div>
+                <div class="msg-main"><b>Harper Quinn</b><span>Can we move the discovery call to Thursday? Also, the dashboard looks great.</span></div>
+                <div class="msg-when">5h</div>
+                <span class="unread-dot"></span>
+              </div>
+              <div class="msg-item">
+                <div class="dash-avatar" data-initials="DE">DE</div>
+                <div class="msg-main"><b>Derek Vaughn</b><span>Element approved the final brand guidelines — amazing work as always.</span></div>
+                <div class="msg-when">1d</div>
+              </div>
+              <div class="msg-item">
+                <div class="dash-avatar" data-initials="SB">SB</div>
+                <div class="msg-main"><b>Simon Bell</b><span>Ivory &amp; Co. would like to talk about the renewal terms.</span></div>
+                <div class="msg-when">2d</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== TEAM ===================== -->
+        <section class="dash-section" id="team">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Team</h1>
+              <p class="dash-h1-sub">14 members — 6 currently free to take work</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-person-plus"></i> Invite Member</a>
+          </div>
+
+          <div class="team-grid">
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="MR">MR</div>
+              <h4>Maya Reyes</h4>
+              <div class="role">Founder — Creative Director</div>
+              <span class="spill is-warn">In project</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="JT">JT</div>
+              <h4>Jonah Turner</h4>
+              <div class="role">Head of Strategy</div>
+              <span class="spill is-warn">In project</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="EL">EL</div>
+              <h4>Elena Lombardi</h4>
+              <div class="role">Design Director</div>
+              <span class="spill is-success">Available</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="PN">PN</div>
+              <h4>Priya Nath</h4>
+              <div class="role">Motion Designer</div>
+              <span class="spill is-warn">In project</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="TO">TO</div>
+              <h4>Theo Olivier</h4>
+              <div class="role">3D Artist</div>
+              <span class="spill is-success">Available</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="AK">AK</div>
+              <h4>Anika Kapoor</h4>
+              <div class="role">Strategist</div>
+              <span class="spill is-warn">In project</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="RK">RK</div>
+              <h4>Ravi Kumar</h4>
+              <div class="role">Front-end Engineer</div>
+              <span class="spill is-success">Available</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+            <div class="team-tile">
+              <div class="dash-avatar" data-initials="LS">LS</div>
+              <h4>Lena Sørensen</h4>
+              <div class="role">Producer</div>
+              <span class="spill is-warn">In project</span>
+              <div style="margin-top:14px; display:flex; gap:6px; justify-content:center;">
+                <a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== ANALYTICS ===================== -->
+        <section class="dash-section" id="analytics">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Analytics &amp; Performance</h1>
+              <p class="dash-h1-sub">Live site and campaign performance — last 30 days</p>
+            </div>
+          </div>
+
+          <div class="dash-cards">
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Site Visits</span><div class="dash-stat-num"><span class="dg-num" data-count="48200">48,200</span></div><span class="dash-delta"><i class="bi bi-arrow-up-short"></i> 12.4%</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Avg. Session</span><div class="dash-stat-num">2m 14s</div><span class="dash-delta"><i class="bi bi-arrow-up-short"></i> 8s</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Bounce Rate</span><div class="dash-stat-num">36.2%</div><span class="dash-delta"><i class="bi bi-arrow-down-short"></i> 3.1% better</span></div>
+            <div class="dash-card dash-stat"><span class="dash-stat-label">Inquiry Rate</span><div class="dash-stat-num">4.8%</div><span class="dash-delta"><i class="bi bi-arrow-up-short"></i> 0.6%</span></div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-head">
+              <div>
+                <div class="dash-card-title">Sessions — Last 12 Months</div>
+                <div class="dash-card-sub">Rolling 12-month view</div>
+              </div>
+            </div>
+            <div class="chart-bars">
+              <div class="chart-bar-wrap"><div class="chart-bar is-soft" style="--h:34%"></div><span class="chart-label">Oct</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar is-soft" style="--h:42%"></div><span class="chart-label">Nov</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar is-soft" style="--h:38%"></div><span class="chart-label">Dec</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar is-soft" style="--h:55%"></div><span class="chart-label">Jan</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:48%"></div><span class="chart-label">Feb</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:66%"></div><span class="chart-label">Mar</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:60%"></div><span class="chart-label">Apr</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:74%"></div><span class="chart-label">May</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:70%"></div><span class="chart-label">Jun</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:86%"></div><span class="chart-label">Jul</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:82%"></div><span class="chart-label">Aug</span></div>
+              <div class="chart-bar-wrap"><div class="chart-bar" style="--h:100%"></div><span class="chart-label">Sep</span></div>
+            </div>
+          </div>
+
+          <div class="dash-row three-col">
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Traffic Trend</div></div>
+              <div class="spark" data-spark="12,18,15,24,29,31,28,40,44,50"><svg viewBox="0 0 260 80" preserveAspectRatio="none" class="spark-svg" aria-hidden="true"><polyline points="0,74.0 28.88888888888889,63.3 57.77777777777778,68.6 86.66666666666667,52.5 115.55555555555556,43.6 144.44444444444446,40.0 173.33333333333334,45.4 202.22222222222223,23.9 231.11111111111111,16.7 260,6.0" fill="none" stroke="#ffd400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div>
+              <div class="pmeta" style="margin-top:10px;"><b>Best day</b><span>Sep — 4,220</span></div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Traffic Sources</div></div>
+              <div style="display:flex; align-items:center; gap:20px;">
+                <div class="donut" style="--c1:46; --c2:27; --c3:17; --c4:10;" role="img" aria-label="46% direct, 27% organic, 17% referral, 10% social">
+                  <div class="donut-inner"><div class="donut-center-num">46%</div><div class="donut-label">Direct</div></div>
+                </div>
+                <div class="legend">
+                  <div class="legend-item"><span class="legend-dot"></span>Direct<small>46%</small></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#8a8a8a"></span>Organic<small>27%</small></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#5f5f5f"></span>Referral<small>17%</small></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#262626; border:1px solid var(--border);"></span>Social<small>10%</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-head"><div class="dash-card-title">Top Pages</div></div>
+              <div class="pmeta"><b>Projects</b><span>18.2k</span></div>
+              <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill" style="width:100%"></div></div>
+              <div class="pmeta"><b>Home</b><span>12.6k</span></div>
+              <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill" style="width:69%"></div></div>
+              <div class="pmeta"><b>Case Studies</b><span>9.4k</span></div>
+              <div class="dprogress" style="margin-bottom:14px;"><div class="dprogress-fill" style="width:52%"></div></div>
+              <div class="pmeta"><b>About</b><span>6.1k</span></div>
+              <div class="dprogress"><div class="dprogress-fill is-soft" style="width:33%"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== REPORTS ===================== -->
+        <section class="dash-section" id="reports">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Reports</h1>
+              <p class="dash-h1-sub">Scheduled exports and one-off downloads</p>
+            </div>
+            <a class="dash-btn is-accent" href="404.html"><i class="bi bi-plus-lg"></i> New Report</a>
+          </div>
+
+          <div class="dash-card">
+            <div class="dtable-wrap">
+              <table class="dtable">
+                <thead>
+                  <tr><th>Report</th><th>Scope</th><th>Cadence</th><th>Last run</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="t-main">Revenue Summary</td>
+                    <td class="t-sub">All services</td>
+                    <td class="t-sub">Monthly</td>
+                    <td class="t-sub">Sep 30, 2026</td>
+                    <td><span class="spill is-success">Ready</span></td>
+                    <td><a class="dt-action" href="404.html" aria-label="Download"><i class="bi bi-download"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">Client Retention</td>
+                    <td class="t-sub">Retainer accounts</td>
+                    <td class="t-sub">Quarterly</td>
+                    <td class="t-sub">Sep 28, 2026</td>
+                    <td><span class="spill is-success">Ready</span></td>
+                    <td><a class="dt-action" href="404.html" aria-label="Download"><i class="bi bi-download"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">Team Utilisation</td>
+                    <td class="t-sub">Delivery team</td>
+                    <td class="t-sub">Weekly</td>
+                    <td class="t-sub">Sep 27, 2026</td>
+                    <td><span class="spill is-warn">Running</span></td>
+                    <td><a class="dt-action" href="404.html" aria-label="Download"><i class="bi bi-download"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td class="t-main">Inquiry Funnel</td>
+                    <td class="t-sub">Marketing site</td>
+                    <td class="t-sub">On demand</td>
+                    <td class="t-sub">Sep 12, 2026</td>
+                    <td><span class="spill is-idle">Draft</span></td>
+                    <td><a class="dt-action" href="404.html" aria-label="Download"><i class="bi bi-download"></i></a><a class="dt-action" href="404.html" aria-label="Edit"><i class="bi bi-pencil"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== ACTIVITY LOG ===================== -->
+        <section class="dash-section" id="activity">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Activity Log</h1>
+              <p class="dash-h1-sub">Everything that changed across the workspace — last 30 days</p>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="act-item"><i class="bi bi-person-plus"></i><div class="act-text"><span>Amara Khan</span> joined the team as Lead Strategist</div><div class="act-when">3h</div></div>
+            <div class="act-item"><i class="bi bi-check2-circle"></i><div class="act-text">Milestone approved — <span>Northlight Platform</span> final build</div><div class="act-when">7h</div></div>
+            <div class="act-item"><i class="bi bi-cash-coin"></i><div class="act-text">Invoice <span>#INV-2041</span> marked paid</div><div class="act-when">1d</div></div>
+            <div class="act-item"><i class="bi bi-pencil"></i><div class="act-text"><span>Element Rebrand</span> moved to Review</div><div class="act-when">2d</div></div>
+            <div class="act-item"><i class="bi bi-toggles"></i><div class="act-text">Service <span>Digital Marketing</span> set to On</div><div class="act-when">4d</div></div>
+            <div class="act-item"><i class="bi bi-box-arrow-up-right"></i><div class="act-text">Case study <span>House of Ivory</span> published</div><div class="act-when">6d</div></div>
+            <div class="act-item"><i class="bi bi-shield-check"></i><div class="act-text">Backup completed for <span>stackly-prod</span></div><div class="act-when">1w</div></div>
+          </div>
+        </section>
+
+        <!-- ===================== SETTINGS ===================== -->
+        <section class="dash-section" id="settings">
+          <div class="dash-section-head">
+            <div>
+              <h1 class="dash-h1">Settings</h1>
+              <p class="dash-h1-sub">Profile, notifications and security</p>
+            </div>
+          </div>
+
+          <div class="dash-row two-col">
+            <div class="dash-card">
+              <div class="dash-card-title" style="margin-bottom:16px;">Profile</div>
+              <div style="display:grid; gap:16px;">
+                <div>
+                  <label class="dash-label" for="admName">Full name</label>
+                  <input class="dash-input" id="admName" type="text" value="Maya Reyes" data-user-name="">
+                </div>
+                <div>
+                  <label class="dash-label" for="admEmail">Email</label>
+                  <input class="dash-input" id="admEmail" type="email" value="maya@stackly.studio" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" data-user-email="" />
+                  <p class="field-msg" role="alert">
+                    <i class="bi bi-exclamation-circle"></i><span></span>
+                  </p>
+                </div>
+                <div>
+                  <label class="dash-label" for="admRole">Role</label>
+                  <input class="dash-input" id="admRole" type="text" value="Founder — Creative Director">
+                </div>
+                <div>
+                  <label class="dash-label" for="admBio">Short bio</label>
+                  <textarea class="dash-textarea" id="admBio" rows="3">Sets the creative bar and the strategy behind every engagement.</textarea>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid; gap:16px;">
+              <div class="dash-card">
+                <div class="dash-card-title" style="margin-bottom:8px;">Notifications</div>
+                <div class="set-row"><div><b>New inquiry alerts</b><span>Email me when a contact form arrives</span></div><label class="switch"><input type="checkbox" checked=""><span class="sw-track"></span></label></div>
+                <div class="set-row"><div><b>Project milestones</b><span>Daily digest of status changes</span></div><label class="switch"><input type="checkbox" checked=""><span class="sw-track"></span></label></div>
+                <div class="set-row"><div><b>Weekly performance</b><span>Analytics summary every Monday</span></div><label class="switch"><input type="checkbox"><span class="sw-track"></span></label></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-title" style="margin-bottom:16px;">Security</div>
+                <div style="display:grid; gap:16px;">
+                  <div>
+                    <label class="dash-label" for="admPw">New password</label>
+                    <input class="dash-input" id="admPw" type="password">
+                  </div>
+                  <div>
+                    <label class="dash-label" for="admPw2">Confirm password</label>
+                    <input class="dash-input" id="admPw2" type="password">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px;">
+            <a class="dash-btn is-accent" href="404.html">Save Changes</a>
+            <a class="dash-btn" href="404.html">Cancel</a>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+    <script src="js/email-validate.js"></script>
+  <script src="js/dashboard.js"></script>
+</body></html>

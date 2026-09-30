@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="STACKLY — A creative agency designing brands that make an impact. Strategy, identity, web, and motion." />
+  <title>STACKLY — Creative Agency</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Bootstrap CSS and the GSAP scripts below are render-blocking, and the GSAP
+     tags are parsed at the end of <body>, so they also gate DOMContentLoaded
+     and therefore the hero intro. Warm both origins up front. -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body class="theme-stackly" data-page="home">
+
+  <!--INCLUDE:header-->
+<header class="site-nav" id="siteNav">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Stackly home">
+        <img src="images/logo-yellow.webp" alt="Stackly" class="brand-logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-line"></span>
+        <span class="toggler-line"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="case-studies.html">Case Studies</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="login.html" class="nav-cta">Login <i class="bi bi-box-arrow-in-right"></i></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<!--/INCLUDE:header-->
+
+  <main>
+
+    <!-- ===================== 01 HERO ===================== -->
+    <section class="hero d-flex align-items-center" id="home">
+      <div class="hero-bg">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-hidden="true" tabindex="-1">
+          <source src="v1.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-video-scrim"></div>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-accents"></div>
+      </div>
+      <div class="container position-relative">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-7">
+            <p class="hero-eyebrow" data-hero-fade>Strategy · Design · Digital</p>
+            <h1 class="hero-title">
+              <span class="line" data-hero-line><span>Turning Bold Ideas</span></span>
+              <span class="line" data-hero-line><span>Into Remarkable</span></span>
+              <span class="line" data-hero-line><span><em>Experiences.</em></span></span>
+            </h1>
+            <p class="hero-desc" data-hero-fade>
+              We are a creative studio crafting distinctive brands, digital experiences, and visual
+              stories that connect with people and leave a lasting impression.
+            </p>
+            <div class="hero-ctas" data-hero-fade>
+              <a href="404.html" class="btn-solid btn-solid--accent">Explore Our Work <i class="bi bi-arrow-right"></i></a>
+              <a href="404.html" class="btn-solid btn-solid--ghost">Let's Create Together <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="hero-visual">
+              <div class="hero-visual-media" data-hero-visual>
+                <img src="images/hero/hero-workspace.webp" alt="Creative studio workspace with design tools" class="img-fluid" loading="eager" />
+              </div>
+              <div class="hero-float hero-float--top">
+                <i class="bi bi-stars"></i>
+                <span>Ideas to<br />Impact</span>
+              </div>
+              <div class="hero-float hero-float--bottom">
+                <span class="float-dot"></span>
+                <span>Creating since 2014</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" data-hero-fade>
+        <span>Scroll to explore</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ===================== 02 INTRO ===================== -->
+    <section class="section" id="intro">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-7">
+            <p class="section-eyebrow" data-reveal>Who We Are</p>
+            <p class="intro-statement" data-reveal>
+              We turn bold ideas into remarkable brands — strategy, design, and digital
+              delivered by <em>one obsessive studio.</em>
+            </p>
+            <p class="section-text" data-reveal>
+              For over a decade we've partnered with founders and established brands to
+              sharpen who they are and how the world sees them. Small enough to care,
+              senior enough to deliver.
+            </p>
+            <a href="404.html" class="btn-solid btn-solid--outline" data-reveal>More About Us <i class="bi bi-arrow-right"></i></a>
+          </div>
+          <div class="col-lg-5">
+            <figure class="intro-media" data-reveal>
+              <img src="images/about/workshop.webp" alt="The STACKLY team running a strategy workshop" width="1200" height="800" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 04 STATS + WHY US ===================== -->
+    <section class="section stats section--light" id="stats">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-reveal>By The Numbers</p>
+          <h2 class="section-title" data-reveal>Results that speak for <em>themselves</em></h2>
+        </div>
+        <div class="row g-4 mb-5" data-reveal>
+          <div class="col-6 col-md-3">
+            <div class="result-card">
+              <span class="result-num" data-count="12">12+</span>
+              <p>Years of craft</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="result-card">
+              <span class="result-num" data-count="120">120+</span>
+              <p>Projects delivered</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="result-card">
+              <span class="result-num" data-count="45">45</span>
+              <p>Brands grown</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="result-card">
+              <span class="result-num" data-count="20">20+</span>
+              <p>Industry awards</p>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3" data-reveal>
+            <article class="why-card">
+              <i class="bi bi-gem"></i>
+              <h3>Craft First</h3>
+              <p>We sweat the details others skip — it's the difference between good and unforgettable.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-3" data-reveal>
+            <article class="why-card">
+              <i class="bi bi-people"></i>
+              <h3>Partnership</h3>
+              <p>We work as an extension of your team — honest, responsive, and invested in your goals.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-3" data-reveal>
+            <article class="why-card">
+              <i class="bi bi-lightbulb"></i>
+              <h3>Curiosity</h3>
+              <p>We chase the unexpected idea — then sharpen it until it earns its place.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-3" data-reveal>
+            <article class="why-card">
+              <i class="bi bi-graph-up-arrow"></i>
+              <h3>Outcomes</h3>
+              <p>Beauty that doesn't deliver results is decoration. We optimize for measurable impact.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 05 SERVICES PREVIEW ===================== -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head d-flex flex-wrap justify-content-between align-items-end">
+          <div>
+            <p class="section-eyebrow" data-reveal>What We Do</p>
+            <h2 class="section-title" data-reveal>Services built for <em>impact</em></h2>
+          </div>
+          <a href="404.html" class="btn-solid btn-solid--outline" data-reveal>View All Services <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="service-card service-card--visual">
+              <div class="service-img-wrap">
+                <img src="images/services/branding.webp" alt="Branding and identity design system" class="service-img" width="800" height="500" loading="lazy" />
+                <span class="service-num">01</span>
+              </div>
+              <div class="service-body">
+                <div class="service-icon"><i class="bi bi-lightbulb"></i></div>
+                <h3>Branding</h3>
+                <p>Positioning, narrative, and identity systems that make you unmistakable in your market.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="service-card service-card--visual">
+              <div class="service-img-wrap">
+                <img src="images/services/ui-ux-design.webp" alt="UI and UX product design interfaces" class="service-img" width="800" height="500" loading="lazy" />
+                <span class="service-num">02</span>
+              </div>
+              <div class="service-body">
+                <div class="service-icon"><i class="bi bi-window-desktop"></i></div>
+                <h3>UI/UX Design</h3>
+                <p>Human-centered product and web interfaces crafted for clarity, delight, and conversion.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="service-card service-card--visual">
+              <div class="service-img-wrap">
+                <img src="images/services/web-design.webp" alt="Modern scalable web design and engineering" class="service-img" width="800" height="500" loading="lazy" />
+                <span class="service-num">03</span>
+              </div>
+              <div class="service-body">
+                <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+                <h3>Web Design</h3>
+                <p>Blazing-fast, accessible platforms engineered with modern, scalable tooling.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 06 SELECTED WORK ===================== -->
+    <section class="section work section--light" id="work">
+      <div class="container">
+        <div class="section-head d-flex flex-wrap justify-content-between align-items-end">
+          <div>
+            <p class="section-eyebrow" data-reveal>Selected Work</p>
+            <h2 class="section-title" data-reveal>Work that <em>performs</em></h2>
+          </div>
+          <a href="404.html" class="btn-solid btn-solid--outline" data-reveal>View All Work <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="row g-4 work-grid">
+          <div class="col-md-6 col-lg-4" data-category="branding" data-reveal>
+            <article class="work-card">
+              <div class="work-media">
+                <img src="images/c1.webp" alt="Brand identity system for a coffee brand" class="img-fluid" loading="lazy" />
+                <div class="work-overlay">
+                  <span class="work-tag">Branding</span>
+                  <a href="404.html" class="work-expand"><i class="bi bi-arrow-up-right"></i></a>
+                </div>
+                <div class="work-info">
+                  <h3>Mono Coffee Co.</h3>
+                  <span>Identity + Packaging</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-category="web" data-reveal>
+            <article class="work-card">
+              <div class="work-media">
+                <img src="images/c2.webp" alt="E-commerce web platform for Atlas Finance" class="img-fluid" loading="lazy" />
+                <div class="work-overlay">
+                  <span class="work-tag">Web</span>
+                  <a href="404.html" class="work-expand"><i class="bi bi-arrow-up-right"></i></a>
+                </div>
+                <div class="work-info">
+                  <h3>Atlas Finance</h3>
+                  <span>E-Commerce Platform</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-category="motion" data-reveal>
+            <article class="work-card">
+              <div class="work-media">
+                <img src="images/c3.webp" alt="Motion and 3D design work" class="img-fluid" loading="lazy" />
+                <div class="work-overlay">
+                  <span class="work-tag">Motion</span>
+                  <a href="404.html" class="work-expand"><i class="bi bi-arrow-up-right"></i></a>
+                </div>
+                <div class="work-info">
+                  <h3>Nova Launch Film</h3>
+                  <span>Motion + 3D</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-category="branding" data-reveal>
+            <article class="work-card">
+              <div class="work-media">
+                <img src="images/c4.webp" alt="Art direction for a health campaign" class="img-fluid" loading="lazy" />
+                <div class="work-overlay">
+                  <span class="work-tag">Branding</span>
+                  <a href="404.html" class="work-expand"><i class="bi bi-arrow-up-right"></i></a>
+                </div>
+                <div class="work-info">
+                  <h3>Vivid Health</h3>
+                  <span>Campaign + Art Direction</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-category="web" data-reveal>
+            <article class="work-card">
+              <div class="work-media">
+                <img src="images/c5.webp" alt="E-commerce and brand design for Arlo Eyewear" class="img-fluid" loading="lazy" />
+                <div class="work-overlay">
+                  <span class="work-tag">Web</span>
+                  <a href="404.html" class="work-expand"><i class="bi bi-arrow-up-right"></i></a>
+                </div>
+                <div class="work-info">
+                  <h3>Arlo Eyewear</h3>
+                  <span>E-Commerce + Brand</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-category="branding" data-reveal>
+            <article class="work-card">
+              <div class="work-media">
+                <img src="images/c6.webp" alt="Brand identity and campaign for Pulse Fitness" class="img-fluid" loading="lazy" />
+                <div class="work-overlay">
+                  <span class="work-tag">Branding</span>
+                  <a href="404.html" class="work-expand"><i class="bi bi-arrow-up-right"></i></a>
+                </div>
+                <div class="work-info">
+                  <h3>Pulse Fitness</h3>
+                  <span>Identity + Campaign</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 07 CREATIVE PROCESS ===================== -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-reveal>How We Work</p>
+          <h2 class="section-title" data-reveal>Our creative <em>process</em></h2>
+        </div>
+        <div class="process-grid">
+          <div class="process-step">
+            <span class="process-num">01</span>
+            <h3>Discover</h3>
+            <p>We dig into your market, audience, and ambitions to find the real opportunity.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">02</span>
+            <h3>Strategy</h3>
+            <p>We shape direction, positioning, and the story that gives everything purpose.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">03</span>
+            <h3>Create</h3>
+            <p>Design, identity, and builds come to life — iterated fast, reviewed honestly.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">04</span>
+            <h3>Launch</h3>
+            <p>We ship polished, tested work across every screen and touchpoint.</p>
+          </div>
+          <div class="process-step">
+            <span class="process-num">05</span>
+            <h3>Grow</h3>
+            <p>We measure, refine, and evolve the work so momentum never stops.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 08 TEAM PREVIEW ===================== -->
+    <section class="section section--light" id="team">
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div>
+            <p class="section-eyebrow" data-reveal>The People</p>
+            <h2 class="section-title" data-reveal>The team behind your <em>brand</em></h2>
+          </div>
+          <a href="404.html" class="btn-solid btn-solid--outline section-head-btn" data-reveal>Meet the Full Team <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="team-card text-center">
+              <img src="images/p1.webp" alt="Maya Reyes" class="team-avatar" loading="lazy" />
+              <h3>Maya Reyes</h3>
+              <span class="team-role">Creative Director</span>
+              <div class="team-social">
+                <a href="404.html" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="404.html" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="team-card text-center">
+              <img src="images/p2.webp" alt="Jonah Turner" class="team-avatar" loading="lazy" />
+              <h3>Jonah Turner</h3>
+              <span class="team-role">Head of Strategy</span>
+              <div class="team-social">
+                <a href="404.html" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="404.html" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="team-card text-center">
+              <img src="images/p3.webp" alt="Elena Lombardi" class="team-avatar" loading="lazy" />
+              <h3>Elena Lombardi</h3>
+              <span class="team-role">Lead Designer</span>
+              <div class="team-social">
+                <a href="404.html" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="404.html" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 09 CLIENTS MARQUEE ===================== -->
+    <section class="clients" id="clients-2">
+      <div class="container">
+        <p class="clients-label" data-reveal>Trusted by teams in 20+ countries</p>
+        <div class="marquee marquee--reverse" aria-hidden="true">
+          <div class="marquee-track">
+            <span class="client-logo">AURA</span>
+            <span class="client-logo">KINETIC</span>
+            <span class="client-logo">HELIX</span>
+            <span class="client-logo">ZENITH</span>
+            <span class="client-logo">MONO</span>
+            <span class="client-logo">ATLAS</span>
+            <span class="client-logo">NOVA</span>
+            <span class="client-logo">LUMEN</span>
+            <span class="client-logo">AURA</span>
+            <span class="client-logo">KINETIC</span>
+            <span class="client-logo">HELIX</span>
+            <span class="client-logo">ZENITH</span>
+            <span class="client-logo">MONO</span>
+            <span class="client-logo">ATLAS</span>
+            <span class="client-logo">NOVA</span>
+            <span class="client-logo">LUMEN</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 10 INSIGHTS ===================== -->
+    <section class="section insights section--light" id="insights">
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div>
+            <p class="section-eyebrow" data-reveal>Insights</p>
+            <h2 class="section-title" data-reveal>From the <em>journal</em></h2>
+          </div>
+          <a href="404.html" class="btn-solid btn-solid--outline section-head-btn" data-reveal>All Articles <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="post-card">
+              <div class="post-media">
+                <img src="images/blog/insight-1.webp" alt="Brand identity article" loading="lazy" />
+              </div>
+              <div class="post-body">
+                <div class="post-meta"><span class="post-cat">Strategy</span><span>Apr 2026</span></div>
+                <h3>The New Rules of Brand Identity in 2026</h3>
+                <p>Why restraint, clarity, and monochrome discipline win attention on an increasingly noisy shelf.</p>
+                <a href="404.html" class="post-link">Read Article <i class="bi bi-arrow-up-right"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="post-card">
+              <div class="post-media">
+                <img src="images/blog/insight-2.webp" alt="Web design article" loading="lazy" />
+              </div>
+              <div class="post-body">
+                <div class="post-meta"><span class="post-cat">Web</span><span>Mar 2026</span></div>
+                <h3>Designing for Conversion: From Pixels to Purchases</h3>
+                <p>How layout, typography, and motion shape trust — and how trust turns into revenue.</p>
+                <a href="404.html" class="post-link">Read Article <i class="bi bi-arrow-up-right"></i></a>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4" data-reveal>
+            <article class="post-card">
+              <div class="post-media">
+                <img src="images/blog/insight-3.webp" alt="Motion design article" loading="lazy" />
+              </div>
+              <div class="post-body">
+                <div class="post-meta"><span class="post-cat">Motion</span><span>Feb 2026</span></div>
+                <h3>Motion Design: Giving Your Brand a Pulse</h3>
+                <p>Movement is the most direct way to make an audience feel something. Here's how to use it well.</p>
+                <a href="404.html" class="post-link">Read Article <i class="bi bi-arrow-up-right"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 11 TESTIMONIALS ===================== -->
+    <section class="section testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow" data-reveal>Client Words</p>
+          <h2 class="section-title" data-reveal>They trusted us with their <em>brands</em></h2>
+        </div>
+        <div class="testimonial-wrapper" data-reveal>
+          <div class="testimonial-slide active" data-slide>
+            <p class="testimonial-quote">
+              "STACKLY didn't just redesign our brand — they reframed how our customers
+              see us. Conversions were up 42% within the first quarter."
+            </p>
+            <div class="testimonial-person">
+              <img src="images/p1.webp" alt="Client portrait" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <strong>Sarah Mitchell</strong>
+                <span>CEO, Atlas Finance</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide" data-slide>
+            <p class="testimonial-quote">
+              "The blend of strategy and taste is rare. Our launch film generated over
+              two million views and a flood of qualified leads."
+            </p>
+            <div class="testimonial-person">
+              <img src="images/p2.webp" alt="Client portrait" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <strong>Daniel Perez</strong>
+                <span>CMO, Northlight</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide" data-slide>
+            <p class="testimonial-quote">
+              "Professional, creative, and fast. Every deadline met, every detail
+              considered. Working with STACKLY has been a genuine joy."
+            </p>
+            <div class="testimonial-person">
+              <img src="images/p3.webp" alt="Client portrait" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <strong>Amara Okafor</strong>
+                <span>Founder, Vivid Health</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-nav">
+            <button class="testimonial-arrow" data-prev aria-label="Previous"><i class="bi bi-arrow-left"></i></button>
+            <button class="testimonial-arrow" data-next aria-label="Next"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 12 NEWSLETTER ===================== -->
+    <section class="section section--light newsletter" id="newsletter">
+      <div class="container">
+        <div class="newsletter-inner" data-reveal>
+          <p class="section-eyebrow">Stay In The Loop</p>
+          <h2 class="section-title">Insights, monthly. <em>No spam.</em></h2>
+          <p class="newsletter-text">Join 4,000+ founders and marketers reading our monthly dispatch on branding and design.</p>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input class="form-control newsletter-input" type="email" id="nlEmail" placeholder="Your email address" aria-label="Email address" required />
+            <p class="field-msg" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></p>
+            <button type="submit" class="btn-solid btn-solid--accent">Subscribe <i class="bi bi-arrow-right"></i></button>
+          </form>
+          <p class="newsletter-note d-none" id="newsletterNote"><i class="bi bi-check2-circle"></i> Thanks for subscribing — see you in your inbox.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 13 CTA ===================== -->
+    <section class="section cta" id="cta">
+      <div class="container">
+        <div class="cta-inner" data-reveal>
+          <p class="section-eyebrow">Let's Work Together</p>
+          <h2 class="cta-title">Have an idea? Let's <em>make it happen.</em></h2>
+          <p class="cta-desc">Tell us where you want to go and we'll build the brand to get you there.</p>
+          <a href="404.html" class="btn-solid btn-solid--accent">Start Your Project <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== BACK TO TOP ===================== -->
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!--INCLUDE:footer-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <a class="brand brand-footer" href="index.html" aria-label="Stackly home">
+          <img src="images/logo-yellow.webp" alt="Stackly" class="brand-logo" />
+        </a>
+        <p class="footer-desc">
+          A strategy-led creative agency designing brands that make an impact —
+          identity, digital experiences, and stories worth sharing.
+        </p>
+        <div class="footer-social">
+          <a href="404.html" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="404.html" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+          <a href="404.html" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="404.html" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+          <a href="404.html" aria-label="Behance"><svg class="footer-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Branding</a></li>
+          <li><a href="services.html">UI/UX Design</a></li>
+          <li><a href="services.html">Web Design</a></li>
+          <li><a href="services.html">Creative Direction</a></li>
+          <li><a href="services.html">Digital Marketing</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Resources</h4>
+        <ul class="footer-links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4 class="footer-heading">Get in Touch</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:hello@stackly.studio"><i class="bi bi-envelope"></i>hello@stackly.studio</a></li>
+          <li><a href="tel:+12125550137"><i class="bi bi-telephone"></i>+1 (212) 555-0137</a></li>
+          <li><a href="https://maps.google.com/?q=88+Mercer+Street+New+York,+NY" target="_blank" rel="noopener"><i class="bi bi-geo-alt"></i>88 Mercer Street, New York</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 STACKLY Studio. All rights reserved.</p>
+      <p>Designed with <i class="bi bi-heart-fill"></i> in New York</p>
+    </div>
+  </div>
+</footer>
+<!--/INCLUDE:footer-->
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/email-validate.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
