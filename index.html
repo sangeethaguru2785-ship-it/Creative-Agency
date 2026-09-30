@@ -574,22 +574,60 @@
       </div>
     </section>
 
-    <!-- ===================== 12 NEWSLETTER ===================== -->
-    <section class="section section--light newsletter" id="newsletter">
-      <div class="container">
-        <div class="newsletter-inner" data-reveal>
-          <p class="section-eyebrow">Stay In The Loop</p>
-          <h2 class="section-title">Insights, monthly. <em>No spam.</em></h2>
-          <p class="newsletter-text">Join 4,000+ founders and marketers reading our monthly dispatch on branding and design.</p>
-          <form class="newsletter-form" id="newsletterForm" novalidate>
-            <input class="form-control newsletter-input" type="email" id="nlEmail" placeholder="Your email address" aria-label="Email address" required />
-            <p class="field-msg" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></p>
-            <button type="submit" class="btn-solid btn-solid--accent">Subscribe <i class="bi bi-arrow-right"></i></button>
-          </form>
-          <p class="newsletter-note d-none" id="newsletterNote"><i class="bi bi-check2-circle"></i> Thanks for subscribing — see you in your inbox.</p>
+    <!--INCLUDE:newsletter-->
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="section section--light newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner" data-reveal>
+      <span class="newsletter-ghost" aria-hidden="true">Subscribe</span>
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <p class="section-eyebrow">The Monthly Dispatch</p>
+          <h2 class="newsletter-title">Stay Inspired. <em>Stay Ahead.</em></h2>
+          <p class="newsletter-text">
+            One considered email a month on the ideas, systems, and craft behind the work.
+            No noise, no recycled threads &mdash; just the things worth your attention.
+          </p>
+          <ul class="newsletter-points">
+            <li><i class="bi bi-stars"></i> Brand and design thinking, unpacked</li>
+            <li><i class="bi bi-clock-history"></i> Roughly four minutes, once a month</li>
+            <li><i class="bi bi-shield-check"></i> Unsubscribe in a single click</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="newsletter-card">
+            <form class="newsletter-form" id="newsletterForm" novalidate>
+              <label class="newsletter-label" for="nlEmail">Email address</label>
+              <input
+                class="form-control newsletter-input"
+                type="email"
+                id="nlEmail"
+                name="nlEmail"
+                placeholder="you@company.com"
+                autocomplete="email"
+                autocapitalize="off"
+                autocorrect="off"
+                spellcheck="false"
+                required
+              />
+              <p class="field-msg" role="alert">
+                <i class="bi bi-exclamation-circle"></i><span></span>
+              </p>
+              <button type="submit" class="btn-solid btn-solid--accent newsletter-btn">
+                Subscribe <i class="bi bi-arrow-right"></i>
+              </button>
+            </form>
+            <p class="newsletter-note d-none" id="newsletterNote">
+              <i class="bi bi-check2-circle"></i> Thanks for subscribing &mdash; see you in your inbox.
+            </p>
+            <p class="newsletter-privacy">We only send the monthly dispatch. Nothing else, ever.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+<!--/INCLUDE:newsletter-->
 
     <!-- ===================== 13 CTA ===================== -->
     <section class="section cta" id="cta">
@@ -640,29 +678,29 @@
       <div class="col-6 col-lg-2">
         <h4 class="footer-heading">Services</h4>
         <ul class="footer-links">
-          <li><a href="services.html">Branding</a></li>
-          <li><a href="services.html">UI/UX Design</a></li>
-          <li><a href="services.html">Web Design</a></li>
-          <li><a href="services.html">Creative Direction</a></li>
-          <li><a href="services.html">Digital Marketing</a></li>
+          <li><a href="404.html">Branding</a></li>
+          <li><a href="404.html">UI/UX Design</a></li>
+          <li><a href="404.html">Web Design</a></li>
+          <li><a href="404.html">Creative Direction</a></li>
+          <li><a href="404.html">Digital Marketing</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2">
         <h4 class="footer-heading">Resources</h4>
         <ul class="footer-links">
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="404.html">FAQ</a></li>
+          <li><a href="404.html">Blog</a></li>
+          <li><a href="404.html">Careers</a></li>
+          <li><a href="404.html">Press</a></li>
+          <li><a href="404.html">Privacy Policy</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2">
         <h4 class="footer-heading">Get in Touch</h4>
         <ul class="footer-links">
-          <li><a href="mailto:hello@stackly.studio"><i class="bi bi-envelope"></i>hello@stackly.studio</a></li>
-          <li><a href="tel:+12125550137"><i class="bi bi-telephone"></i>+1 (212) 555-0137</a></li>
-          <li><a href="https://maps.google.com/?q=88+Mercer+Street+New+York,+NY" target="_blank" rel="noopener"><i class="bi bi-geo-alt"></i>88 Mercer Street, New York</a></li>
+          <li><a href="404.html"><i class="bi bi-envelope"></i>hello@stackly.studio</a></li>
+          <li><a href="404.html"><i class="bi bi-telephone"></i>+1 (212) 555-0137</a></li>
+          <li><a href="404.html"><i class="bi bi-geo-alt"></i>88 Mercer Street, New York</a></li>
         </ul>
       </div>
     </div>
