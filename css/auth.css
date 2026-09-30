@@ -1,0 +1,644 @@
+/* ==========================================================================
+   STACKLY — Authentication pages (login / signup)
+   ==========================================================================
+   Layout: split with two equal cards side by side, centered vertically.
+   ==========================================================================
+*/
+.auth-wrap {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: var(--bg);
+}
+
+.auth-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 18% 12%, rgba(255, 212, 0, 0.07), transparent 52%),
+    radial-gradient(ellipse at 86% 82%, rgba(255, 212, 0, 0.04), transparent 45%);
+}
+
+/* ---------- Split layout ---------- */
+.auth-split {
+  width: 100%;
+  max-width: 1240px;
+  display: grid;
+  /* Showcase keeps the narrower share so the form card can reach further left
+     instead of the two columns competing for the same width. */
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  align-items: stretch;
+  gap: 32px;
+  animation: authIn 0.55s ease both;
+}
+
+@keyframes authIn {
+  from { opacity: 0.01; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Panel wrapper ---------- */
+.auth-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Cards ---------- */
+.auth-card,
+.auth-showcase {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 34px 32px;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.4);
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* The card takes the full width of its grid track; the showcase stays capped
+   so the image panel does not stretch as far as the form. */
+.auth-card { max-width: 690px; }
+.auth-showcase { max-width: 560px; }
+
+.auth-card-head { margin-bottom: 26px; }
+
+.auth-card-head h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.auth-card-head p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ---------- Showcase card ---------- */
+.auth-showcase {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg-card);
+  padding: 38px 36px 36px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.auth-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(160deg, rgba(255, 212, 0, 0.16) 0%, rgba(10, 10, 10, 0.8) 40%, rgba(10, 10, 10, 0.92) 100%);
+}
+
+.auth-showcase::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 0% 0%, rgba(255, 212, 0, 0.14), transparent 55%);
+  pointer-events: none;
+}
+
+.auth-showcase-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("../images/c8.webp");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+  transition: transform 0.45s ease;
+}
+
+.auth-showcase:hover .auth-showcase-media { transform: scale(1.06); }
+.auth-showcase:hover { transform: translateY(-4px); border-color: var(--yellow-line); box-shadow: 0 50px 120px rgba(0, 0, 0, 0.5); }
+
+.auth-showcase-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 24px;
+}
+
+.auth-showcase-top { display: grid; gap: 16px; }
+
+.auth-showcase-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  color: var(--accent);
+}
+
+.auth-showcase h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.auth-showcase p {
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  max-width: 42ch;
+  margin: 0;
+}
+
+/* Supporting block that sits under the showcase copy, still below the logo.
+   Sized to stay clear of the h3 in the hierarchy - small heading, one line of
+   body, one quiet meta line - and separated by a hairline instead of another
+   box so the panel does not start reading as stacked cards. These selectors are
+   scoped to .auth-showcase because the blanket `p` rule above (42ch max-width,
+   margin 0) would otherwise win on specificity and squash all three. */
+.auth-showcase-cta {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.auth-showcase .auth-showcase-cta-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+
+.auth-showcase .auth-showcase-cta-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 36ch;
+  margin: 0 0 12px;
+}
+
+.auth-showcase .auth-showcase-cta-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  max-width: none;
+  margin: 0;
+}
+
+/* The single yellow accent in the block, echoing the eyebrow and the chips. */
+.auth-showcase-dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.auth-showcase-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.auth-showcase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.96rem;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.auth-showcase:hover .auth-showcase-link { transform: translateX(4px); }
+
+.auth-showcase-link i { font-size: 1rem; }
+
+.auth-showcase-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 12px;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.auth-showcase-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--yellow-line);
+  background: rgba(10, 10, 10, 0.45);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+}
+
+.auth-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  transition: opacity 0.25s ease;
+}
+
+.auth-logo:hover { opacity: 0.8; }
+
+.auth-logo img { height: 36px; width: auto; }
+
+/* Wordmark anchors the top of the left showcase panel. It sits inside
+   .auth-showcase-top, not as a sibling of it: that column is a space-between
+   flex container, so a third child would let the slack pool into one huge gap
+   under the logo. Grouped with the headline it inherits the existing 16px grid
+   gap and the two-way top/foot distribution is untouched. Left-aligned to match
+   the copy below it, and unboxed so the panel stays uncluttered. */
+.auth-logo--showcase { justify-self: start; }
+/* 38px reads clearly against the dark image panel while staying just under the
+   showcase h3 (clamp caps at 2.4rem = 38.4px), so the headline keeps the top of
+   the hierarchy. Only about 21% of the panel's content width, so the card still
+   breathes. */
+.auth-logo--showcase img { height: 38px; }
+
+.auth-logo span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.auth-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 22px;
+  transition: color 0.25s ease;
+}
+
+.auth-back:hover { color: var(--text); }
+
+.auth-row { display: grid; gap: 18px; }
+
+.auth-field { display: grid; gap: 8px; }
+
+.auth-label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.auth-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  padding: 12px 14px;
+  font-size: 0.93rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.auth-input::placeholder { color: #6f6f6f; }
+
+.auth-input:hover { border-color: var(--yellow-line); }
+
+.auth-input:focus {
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.18);
+  background: var(--bg-card);
+}
+
+.auth-input.is-invalid {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22);
+}
+
+.auth-password { position: relative; }
+
+.auth-password .auth-input { padding-right: 46px; }
+
+.auth-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.auth-toggle:hover { color: var(--text); background: var(--bg-card-hover); }
+
+/* Field-level feedback */
+.field-msg {
+  display: none;
+  align-items: center;
+  gap: 7px;
+  color: #e6e6e6;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.field-msg.is-visible { display: flex; animation: msgIn 0.3s ease; }
+
+.field-msg i { font-size: 0.9rem; }
+
+@keyframes msgIn {
+  from { opacity: 0.01; transform: translateY(-3px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Password requirement checklist, built from js/password-validate.js.
+   Hidden from assistive tech: the .field-msg above carries the same
+   information as text, and this list changes on every keystroke. */
+.pw-hint { margin-top: 2px; }
+
+.pw-rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  opacity: 0.5;
+  transition: opacity 0.25s ease;
+}
+
+.pw-rules.is-active { opacity: 1; }
+
+.pw-rules li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.pw-rules li i { font-size: 0.78rem; color: currentColor; }
+
+.pw-rules li.is-ok { color: var(--accent); }
+
+/* Segmented role switch */
+.role-seg {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.role-seg input { position: absolute; opacity: 0; pointer-events: none; }
+
+.role-seg label {
+  text-align: center;
+  padding: 9px 10px;
+  border-radius: 9px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.role-seg label:hover { color: var(--text); }
+
+.role-seg input:checked + label { background: var(--accent); color: #0a0a0a; }
+
+.role-seg input:focus-visible + label { box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.25); }
+
+/* Meta row (remember me / terms + forgot) */
+.auth-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin: 6px 0 2px;
+}
+
+.auth-check { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; }
+
+.auth-check input { position: absolute; opacity: 0; pointer-events: none; }
+
+.auth-check .cb {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+
+.auth-check:hover .cb { border-color: var(--yellow-line); }
+
+.auth-check input:focus-visible + .cb { box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.25); }
+
+.auth-check input.is-invalid + .cb,
+.auth-check input.is-invalid:hover + .cb { border-color: #fff; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.22); }
+
+.auth-check input:checked + .cb {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0a0a0a;
+}
+
+.auth-link { color: var(--accent); }
+
+.auth-link:hover { text-decoration: underline; }
+
+.auth-terms { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.auth-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #0a0a0a;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.auth-btn:hover {
+  background: var(--yellow-bright);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(255, 212, 0, 0.2);
+}
+
+.auth-btn:active { transform: translateY(0); }
+
+.auth-btn:focus-visible { box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.45); }
+
+.auth-btn.is-busy { pointer-events: none; opacity: 1; }
+
+.auth-btn i { transition: transform 0.25s ease; }
+
+.auth-btn:hover i { transform: translateX(3px); }
+
+/* Alternative actions */
+.auth-alt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 16px;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.auth-alt:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-card-hover); }
+
+.auth-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 18px;
+  margin-top: 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.auth-home:hover { color: var(--text); border-color: var(--border); background: var(--bg-card-hover); }
+
+.auth-home:focus-visible { box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.25); }
+
+.auth-switch {
+  margin-top: 22px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* Status banners */
+.auth-success {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #0a0a0a;
+  font-weight: 600;
+  font-size: 0.87rem;
+  animation: msgIn 0.35s ease;
+}
+
+.auth-success.is-visible { display: flex; }
+
+.auth-success i { font-size: 1rem; }
+
+.auth-err {
+  display: none;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.84rem;
+}
+
+.auth-err.is-visible { display: block; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+  .auth-split {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .auth-card,
+  .auth-showcase {
+    max-width: 520px;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .auth-showcase-content { min-height: 320px; }
+}
+
+@media (max-width: 575.98px) {
+  .auth-wrap { padding: 24px 16px; }
+
+  .auth-card,
+  .auth-showcase { padding: 28px 22px 26px; }
+
+  .auth-showcase-content { min-height: 280px; }
+
+  .auth-meta { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .auth-card { animation: none; }
+  .field-msg,
+  .auth-success { animation: none; }
+}

@@ -1,0 +1,52 @@
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="section section--light newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner" data-reveal>
+      <span class="newsletter-ghost" aria-hidden="true">Subscribe</span>
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <p class="section-eyebrow">The Monthly Dispatch</p>
+          <h2 class="newsletter-title">Stay Inspired. <em>Stay Ahead.</em></h2>
+          <p class="newsletter-text">
+            One considered email a month on the ideas, systems, and craft behind the work.
+            No noise, no recycled threads &mdash; just the things worth your attention.
+          </p>
+          <ul class="newsletter-points">
+            <li><i class="bi bi-stars"></i> Brand and design thinking, unpacked</li>
+            <li><i class="bi bi-clock-history"></i> Roughly four minutes, once a month</li>
+            <li><i class="bi bi-shield-check"></i> Unsubscribe in a single click</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="newsletter-card">
+            <form class="newsletter-form" id="newsletterForm" novalidate>
+              <label class="newsletter-label" for="nlEmail">Email address</label>
+              <input
+                class="form-control newsletter-input"
+                type="email"
+                id="nlEmail"
+                name="nlEmail"
+                placeholder="you@company.com"
+                autocomplete="email"
+                autocapitalize="off"
+                autocorrect="off"
+                spellcheck="false"
+                required
+              />
+              <p class="field-msg" role="alert">
+                <i class="bi bi-exclamation-circle"></i><span></span>
+              </p>
+              <button type="submit" class="btn-solid btn-solid--accent newsletter-btn">
+                Subscribe <i class="bi bi-arrow-right"></i>
+              </button>
+            </form>
+            <p class="newsletter-note d-none" id="newsletterNote">
+              <i class="bi bi-check2-circle"></i> Thanks for subscribing &mdash; see you in your inbox.
+            </p>
+            <p class="newsletter-privacy">We only send the monthly dispatch. Nothing else, ever.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
